@@ -9,6 +9,7 @@ import Gallery from './components/organisms/Gallery/Gallery'
 import Team from './components/organisms/Team/Team'
 import Footer from './components/organisms/Footer/Footer'
 import GameDialog from './components/organisms/GameDialog/GameDialog'
+import FloatingFeathers from './components/atoms/FloatingFeathers/FloatingFeathers'
 
 const App = React.memo(function App() {
     const [isGameOpen, setIsGameOpen] = React.useState(false)
@@ -22,7 +23,8 @@ const App = React.memo(function App() {
     }, [])
 
     return (
-        <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+        <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', position: 'relative' }}>
+            <FloatingFeathers />
             <Header onPlayClick={handleOpenGame} />
             <Hero onPlayClick={handleOpenGame} />
             <Overview />
