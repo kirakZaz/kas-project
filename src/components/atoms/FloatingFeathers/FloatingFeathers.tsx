@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
+import type { SxProps, Theme } from '@mui/material/styles'
 import { styles, featherKeyframes } from './FloatingFeathers.styles'
 
 const FEATHERS = [
@@ -21,24 +22,27 @@ const FloatingFeathers = React.memo(function FloatingFeathers() {
     return (
         <Box sx={styles.container}>
             <style>{featherKeyframes}</style>
-            {FEATHERS.map((f, i) => (
-                <Box
-                    key={i}
-                    component="img"
-                    src="/assets/ui/feather.png"
-                    alt=""
-                    sx={{
-                        ...styles.feather,
-                        top: f.top,
-                        left: f.left,
-                        right: f.right,
-                        width: f.size,
-                        animationDelay: `${f.delay}s`,
-                        animationDuration: `${f.duration}s`,
-                        transform: `rotate(${f.rotate}deg)`
-                    }}
-                />
-            ))}
+            {FEATHERS.map((f, i) => {
+                const sx: SxProps<Theme> = {
+                    ...styles.feather,
+                    top: f.top,
+                    left: f.left ?? undefined,
+                    right: f.right ?? undefined,
+                    width: f.size,
+                    animationDelay: `${f.delay}s`,
+                    animationDuration: `${f.duration}s`,
+                    transform: `rotate(${f.rotate}deg)`
+                }
+                return (
+                    <Box
+                        key={i}
+                        component="img"
+                        src="/assets/ui/feather.png"
+                        alt=""
+                        sx={sx}
+                    />
+                )
+            })}
         </Box>
     )
 })
