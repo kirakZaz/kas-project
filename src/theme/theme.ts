@@ -59,12 +59,12 @@ const theme = createTheme({
                     textTransform: 'uppercase',
                     fontWeight: 700,
                     letterSpacing: '0.08em',
-                    borderRadius: 2
-                },
-                containedPrimary: {
-                    background: 'linear-gradient(135deg, #c4a265 0%, #9a7d4e 100%)',
-                    '&:hover': {
-                        background: 'linear-gradient(135deg, #d4b87a 0%, #c4a265 100%)'
+                    borderRadius: 2,
+                    '&.MuiButton-containedPrimary': {
+                        background: 'linear-gradient(135deg, #c4a265 0%, #9a7d4e 100%)',
+                        '&:hover': {
+                            background: 'linear-gradient(135deg, #d4b87a 0%, #c4a265 100%)'
+                        }
                     }
                 }
             }
