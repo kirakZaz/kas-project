@@ -6,15 +6,10 @@ import { styles } from './Concept.styles'
 
 const TABS = [
     {
-        label: 'Hero',
-        items: [
-            { title: 'Kas Textured — Front', image: '/assets/character/kas-textured-1.png' },
-            { title: 'Kas Textured — Back', image: '/assets/character/kas-textured-2.png' }
-        ]
-    },
-    {
         label: 'Character',
         items: [
+            { title: 'Kas Textured — Front', image: '/assets/character/kas-textured-1.png' },
+            { title: 'Kas Textured — Back', image: '/assets/character/kas-textured-2.png' },
             { title: 'Kas Character Design', image: '/assets/character/kas-design.png' },
             { title: 'Kas Animations Guide', image: '/assets/character/kas-animations.png' },
             { title: 'Kas Texture (Albedo)', image: '/assets/textures/kas-albedo.png' }
@@ -51,11 +46,24 @@ const TABS = [
         ]
     },
     {
+        label: 'Enemies',
+        items: [
+            { title: 'Enemy Concepts — Reapers', image: '/assets/enemies/enemy-1.png' },
+            { title: 'Enemy Concepts — Creatures', image: '/assets/enemies/enemy-2.png' },
+            { title: 'Enemy Sketches', image: '/assets/enemies/enemy-sketch.png' }
+        ]
+    },
+    {
         label: 'Assets',
         items: [
             { title: 'Stained Glass Shield', image: '/assets/textures/shield-albedo.png' },
+            { title: 'Shield 3D Model', image: '/assets/textures/shield-3d.png' },
             { title: 'Silver Blade', image: '/assets/textures/sword-albedo.png' },
-            { title: 'Gothic Turret Base', image: '/assets/textures/turret-albedo.png' }
+            { title: 'Sword 3D Model', image: '/assets/textures/sword-3d.png' },
+            { title: 'Gothic Turret Base', image: '/assets/textures/turret-albedo.png' },
+            { title: 'Turret Base — Front', image: '/assets/textures/turret-base-1.png' },
+            { title: 'Turret Base — Back', image: '/assets/textures/turret-base-2.png' },
+            { title: 'Gothic Turret 3D', image: '/assets/textures/turret-3d.png' }
         ]
     }
 ]

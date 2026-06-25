@@ -7,7 +7,8 @@ import { styles } from './Gallery.styles'
 const SCREENSHOTS = [
     { title: 'Unity Editor — Materials Setup', image: '/assets/screenshots/process-1.png' },
     { title: 'Kas In-Game — Gothic Level', image: '/assets/screenshots/process-2.png' },
-    { title: 'Level Overview — Full Scene', image: '/assets/screenshots/process-3.png' }
+    { title: 'Level Overview — Full Scene', image: '/assets/screenshots/process-3.png' },
+    { title: 'KAS Animations Settings', image: '/assets/screenshots/animations-settings.png' }
 ]
 
 const VIDEOS = [
@@ -16,7 +17,11 @@ const VIDEOS = [
     { title: 'Level Iteration', src: '/assets/video/gameplay-3.mp4' },
     { title: 'Mechanics Progress', src: '/assets/video/gameplay-4.mp4' },
     { title: 'Glide & VFX', src: '/assets/video/gameplay-5.mp4' },
-    { title: 'Latest Build', src: '/assets/video/gameplay-6.mp4' }
+    { title: 'Latest Build', src: '/assets/video/gameplay-6.mp4' },
+    { title: 'Baking Process', src: '/assets/video/gameplay-7.mp4' },
+    { title: 'KAS Movement', src: '/assets/video/gameplay-8.mp4' },
+    { title: 'Character Proto + Camera', src: '/assets/video/gameplay-9.mp4' },
+    { title: 'Character Proto + Camera v2', src: '/assets/video/gameplay-10.mp4' }
 ]
 
 const Gallery = React.memo(function Gallery() {
