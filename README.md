@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+# KAS — A Gothic 3D Platformer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive showcase website for **KAS**, a gothic 3D platformer prototype developed as part of **RGP204: Rapid Game Prototype** at Torrens University Australia (Trimester 3, 2026).
 
-Currently, two official plugins are available:
+## Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+# Install dependencies
+npm install
 
-## React Compiler
+# Run development server
+npm run dev
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build for production
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The development server will start at `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## About the Game
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+KAS is a 3D platformer set in a dark gothic world. Players control Kas — a bird-like creature navigating through ancient architecture, deadly traps, and mysterious turrets. The game features three core mechanics:
+
+- **Double Jump** — Precise platforming through gothic spires
+- **Glide** — Spread feathered wings to soar across chasms
+- **I-Frames** — Activate invincibility shields to survive blade traps
+
+Every asset in the game — character models, textures, environment, sound effects — was created from scratch by the team over a 4-week rapid prototyping sprint cycle.
+
+## Playing the Game
+
+Click the **"Play Now"** button on the website to launch the WebGL build directly in your browser. The game is embedded via Unity WebGL and requires no installation.
+
+## Project Structure
+
 ```
+public/
+  assets/          # All game art, screenshots, videos, audio
+  game/            # Unity WebGL build (index.html, Build/, TemplateData/)
+src/
+  components/      # React components (organisms, atoms)
+  context/         # Shared state (ImageViewer)
+  hooks/           # Custom hooks (scroll animations, tilt)
+  theme/           # MUI dark gothic theme
+```
+
+## Tech Stack
+
+- **Game Engine:** Unity 6 (C#)
+- **Website:** React 19, TypeScript, Vite, Material UI
+- **Animations:** Framer Motion, React Intersection Observer
+- **Deployment:** GitHub Pages
+
+## Team
+
+| Name | Role |
+|------|------|
+| **Kira Zakirov** | Lead Developer — Game mechanics, Unity programming, level design, UI, WebGL build, website |
+| **Sarah Assiri** | 3D Artist & Animator — Character modeling, rigging, animation, texturing, VFX |
+| **Alexander Ramic** | Game Designer & Sound Designer — Mechanics documents, concept art, enemy design, sound effects |
+
+## License
+
+This project was created for academic purposes as part of RGP204 at Torrens University Australia.
