@@ -125,13 +125,11 @@ const GameDialog = React.memo(function GameDialog({ isOpen, onClose }: GameDialo
             <Dialog
                 open={isOpen}
                 onClose={onClose}
-                fullWidth
-                maxWidth="lg"
+                fullScreen
                 sx={{
                     '& .MuiDialog-paper': {
-                        height: '85vh',
-                        bgcolor: '#06060c',
-                        border: '1px solid rgba(196,164,74,0.2)',
+                        bgcolor: '#000',
+                        border: 'none',
                     },
                 }}
             >
@@ -176,19 +174,19 @@ const GameDialog = React.memo(function GameDialog({ isOpen, onClose }: GameDialo
                         <CloseRoundedIcon />
                     </IconButton>
                 </Box>
-                <DialogContent sx={{ p: 0, display: 'flex', flex: 1 }}>
-                    <Box sx={{
-                        flex: 1, display: 'flex', flexDirection: 'column',
-                        alignItems: 'center', justifyContent: 'center',
-                        bgcolor: '#0d0d14',
-                    }}>
-                        <Typography variant="h3" sx={{ color: '#8a8580', mb: 1, fontFamily: '"Cinzel", serif' }}>
-                            WebGL Build
-                        </Typography>
-                        <Typography variant="body2" sx={{ color: '#4a4540', textAlign: 'center', maxWidth: 400 }}>
-                            Place your Unity WebGL build in public/game/ to play in browser.
-                        </Typography>
-                    </Box>
+                <DialogContent sx={{ p: 0, display: 'flex', flex: 1, overflow: 'hidden' }}>
+                    <Box
+                        component="iframe"
+                        src="/game/build/index.html"
+                        title="KAS Game"
+                        sx={{
+                            width: '100%',
+                            height: '100%',
+                            border: 'none',
+                            flex: 1,
+                        }}
+                        allow="autoplay; fullscreen"
+                    />
                 </DialogContent>
             </Dialog>
 
