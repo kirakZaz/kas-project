@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, GlobalStyles } from '@mui/material'
 import Header from './components/organisms/Header/Header'
 import Hero from './components/organisms/Hero/Hero'
 import Overview from './components/organisms/Overview/Overview'
@@ -9,7 +9,9 @@ import Gallery from './components/organisms/Gallery/Gallery'
 import Team from './components/organisms/Team/Team'
 import Footer from './components/organisms/Footer/Footer'
 import GameDialog from './components/organisms/GameDialog/GameDialog'
-import FloatingFeathers from './components/atoms/FloatingFeathers/FloatingFeathers'
+import ParticleField from './components/atoms/ParticleField/ParticleField'
+import CustomCursor from './components/atoms/CustomCursor/CustomCursor'
+import { ImageViewerProvider } from './context/ImageViewerContext'
 
 const App = React.memo(function App() {
     const [isGameOpen, setIsGameOpen] = React.useState(false)
@@ -23,18 +25,22 @@ const App = React.memo(function App() {
     }, [])
 
     return (
-        <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', position: 'relative' }}>
-            <FloatingFeathers />
-            <Header onPlayClick={handleOpenGame} />
-            <Hero onPlayClick={handleOpenGame} />
-            <Overview />
-            <Concept />
-            <Process />
-            <Gallery />
-            <Team />
-            <Footer />
-            <GameDialog isOpen={isGameOpen} onClose={handleCloseGame} />
-        </Box>
+        <ImageViewerProvider>
+            <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', position: 'relative', cursor: 'none' }}>
+                <GlobalStyles styles={{ '*, *::before, *::after': { cursor: 'none !important' } }} />
+                <CustomCursor />
+                <ParticleField />
+                <Header onPlayClick={handleOpenGame} />
+                <Hero onPlayClick={handleOpenGame} />
+                <Overview />
+                <Process />
+                <Concept />
+                <Gallery />
+                <Team />
+                <Footer />
+                <GameDialog isOpen={isGameOpen} onClose={handleCloseGame} />
+            </Box>
+        </ImageViewerProvider>
     )
 })
 

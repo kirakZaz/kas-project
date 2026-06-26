@@ -14,8 +14,11 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^9.1.1",
     "@mui/material": "^9.1.1",
+    "@react-spring/web": "^10.1.2",
+    "framer-motion": "^12.42.0",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react-dom": "^19.2.6",
+    "react-intersection-observer": "^10.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
