@@ -45,12 +45,12 @@ const MEMBERS: TeamMember[] = [
     {
         name: 'Sarah Assiri',
         initials: 'SA',
-        role: '3D Artist & Animator',
+        role: '3D Artist, Animator & Level Designer',
         contributions: [
             'Kas character modeling & topology rework (43k to 609 tris)',
             'Character rigging & all animation clips',
-            '3D asset modeling (shield, sword, turret, lyre)',
-            'Low-poly optimization (43k to 609 tris)',
+            'Enemy concept art (Reapers, Creatures, Angel)',
+            'Level design & layout',
             'Texturing for map & assets',
             'VFX particle effects',
             'Health feather models for UI',
@@ -59,11 +59,11 @@ const MEMBERS: TeamMember[] = [
     {
         name: 'Alexander Ramic',
         initials: 'AR',
-        role: 'Game Designer & Sound Designer',
+        role: 'Game Designer, 3D Modeller & Sound Designer',
         contributions: [
             'Game mechanic design documents (Double Jump, I-Frames, Glide)',
+            '3D asset modeling (shield, sword, turrets)',
             'Character design concepts & iterations',
-            'Enemy concept art (Reapers, Creatures, Angel)',
             'Environment & character moodboards',
             'Sound effects — blade, shield, damage, jump',
             'Team coordination & sprint planning',

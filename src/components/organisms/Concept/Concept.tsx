@@ -43,15 +43,14 @@ const TABS: ConceptTab[] = [
             { title: 'Blender — Close Detail', image: '/assets/character/kas-char-13.png' },
             { title: 'Blender — Sculpt View', image: '/assets/character/kas-char-14.png' },
             { title: 'Blender — Side Angle', image: '/assets/character/kas-char-15.png' },
-            // kas-char-17 = Early prototype in Unity
-            { title: 'Early Prototype — Unity', image: '/assets/character/kas-char-17.png' },
-            // kas-char-18,19,20 = Textured renders
-            { title: 'Kas Textured — Front', image: '/assets/character/kas-char-18.png' },
-            { title: 'Kas Textured — Alt', image: '/assets/character/kas-char-19.png' },
-            { title: 'Kas Textured — Side', image: '/assets/character/kas-char-20.png' },
-            // kas-char-21,22 = Final textured model
-            { title: 'Kas Final — Glide Pose', image: '/assets/character/kas-char-21.png' },
-            { title: 'Kas Final — T-Pose Textured', image: '/assets/character/kas-char-22.png' },
+            // kas-char-16 = Early prototype in Unity
+            { title: 'Early Prototype — Unity', image: '/assets/character/kas-char-16.png' },
+            // kas-char-17 = Textured front
+            { title: 'Kas Textured — Front', image: '/assets/character/kas-char-17.png' },
+            // kas-char-18 = Textured glide pose
+            { title: 'Kas Textured — Glide Pose', image: '/assets/character/kas-char-18.png' },
+            // kas-char-19 = Textured T-pose
+            { title: 'Kas Textured — T-Pose', image: '/assets/character/kas-char-19.png' },
         ],
     },
     {

@@ -20,9 +20,9 @@ const SPRINTS: Sprint[] = [
         dates: '1 – 7 Jun',
         jira: '/assets/sprints/sprint1-backlog.png',
         images: [
-            '/assets/sketches/sketch-1.jpg',
-            '/assets/blender/kas-3d-1.png',
-            '/assets/character/kas-design-v1.png',
+            '/assets/timeline1/tl1-1.png',
+            '/assets/timeline1/tl1-2.jpg',
+            '/assets/timeline1/tl1-3.png',
         ],
         description:
             'Character concept sketches, initial 3D modeling in Blender, double jump mechanic implementation, and first playable prototype.',
@@ -32,9 +32,9 @@ const SPRINTS: Sprint[] = [
         dates: '8 – 14 Jun',
         jira: '/assets/sprints/sprint2-iframe.png',
         images: [
-            '/assets/blender/assets-overview-1.png',
-            '/assets/textures/shield-3d.png',
-            '/assets/textures/sword-3d.png',
+            '/assets/timeline2/tl2-1.png',
+            '/assets/timeline2/tl2-2.png',
+            '/assets/timeline2/tl2-3.png',
         ],
         description:
             '3D asset creation (shield, sword, turret), sound effects production, I-Frame mechanic with orbiting shields, and mechanics documentation.',
@@ -44,9 +44,9 @@ const SPRINTS: Sprint[] = [
         dates: '15 – 21 Jun',
         jira: '/assets/sprints/sprint3-glide.png',
         images: [
-            '/assets/sarah-work/sarah-1.png',
-            '/assets/blender/kas-textured-1.png',
-            '/assets/blender/turret-textured-1.png',
+            '/assets/timeline3/tl3-1.png',
+            '/assets/timeline3/tl3-2.png',
+            '/assets/timeline3/tl3-3.png',
         ],
         description:
             'Character topology rework by Sarah, texturing all assets, glide mechanic implementation, VFX effects, and environment building.',
