@@ -64,7 +64,9 @@ const TABS: ConceptTab[] = [
     {
         label: 'Environment',
         items: [
-            // concept env folder
+            { title: 'Level — Lanterns & Platforms', image: '/assets/concept-env/env-8.png' },
+            { title: 'Level — Overview', image: '/assets/concept-env/env-7.png' },
+            { title: 'Level — Editor View', image: '/assets/concept-env/env-9.png' },
             { title: 'Environment Concepts Pt.1', image: '/assets/concept-env/env-1.png' },
             { title: 'Environment Concepts Pt.2', image: '/assets/concept-env/env-2.png' },
             { title: 'Level Scene — Rain & Lighting', image: '/assets/concept-env/env-3.png' },

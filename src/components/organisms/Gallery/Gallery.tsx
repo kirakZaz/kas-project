@@ -6,6 +6,7 @@ import SectionTitle from '../../atoms/SectionTitle/SectionTitle'
 import SlideGallery from '../../atoms/SlideGallery/SlideGallery'
 
 const VIDEOS = [
+    { title: 'Latest Build',       src: '/assets/video/gameplay-11.mp4' },
     { title: 'Early Prototype',    src: '/assets/video/REC-20260617183338.mp4' },
     { title: 'Movement Test',      src: '/assets/video/REC-20260617192624.mp4' },
     { title: 'Level Build',        src: '/assets/video/2026-06-18 19-09-34.mp4' },
