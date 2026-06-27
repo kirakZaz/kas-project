@@ -3,6 +3,7 @@ import { Box, Typography, Grid, Card, CardContent } from '@mui/material'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import SectionTitle from '../../atoms/SectionTitle/SectionTitle'
+import { styles, getMechCardSx, getMechTitleSx } from './Overview.styles'
 
 const MotionCard = motion.create(Card)
 
@@ -31,23 +32,13 @@ const Overview = React.memo(function Overview() {
     const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
 
     return (
-        <Box id="about" ref={ref} sx={{ py: { xs: 10, md: 14 }, px: { xs: 2, md: 6 }, maxWidth: 1200, mx: 'auto' }}>
+        <Box id="about" ref={ref} sx={styles.section}>
             <SectionTitle
                 title="About the Game"
                 subtitle="A gothic 3D platformer built with Unity, featuring hand-crafted assets and unique mechanics"
             />
 
-            <Typography
-                variant="body1"
-                sx={{
-                    textAlign: 'center',
-                    maxWidth: 700,
-                    mx: 'auto',
-                    mb: 8,
-                    color: 'text.secondary',
-                    lineHeight: 2,
-                }}
-            >
+            <Typography variant="body1" sx={styles.description}>
                 KAS is a rapid prototype developed over 4 weeks in a team of 3. The game follows
                 a bird-like creature named Kas through a dark, gothic world. Every asset — from
                 character models to textures and sound effects — was created from scratch.
@@ -61,47 +52,20 @@ const Overview = React.memo(function Overview() {
                             animate={inView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.7, delay: 0.2 + i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
                             data-cursor="pointer"
-                            sx={{
-                                height: '100%',
-                                textAlign: 'center',
-                                position: 'relative',
-                                overflow: 'hidden',
-                                '&::before': {
-                                    content: '""',
-                                    position: 'absolute',
-                                    top: 0, left: 0, right: 0,
-                                    height: 3,
-                                    background: `linear-gradient(90deg, transparent, ${mech.color}, transparent)`,
-                                    opacity: 0,
-                                    transition: 'opacity 0.4s',
-                                },
-                                '&:hover::before': { opacity: 1 },
-                                '&:hover .mech-icon': {
-                                    transform: 'scale(1.15) rotate(5deg)',
-                                    filter: `drop-shadow(0 0 20px ${mech.color}40)`,
-                                },
-                            }}
+                            sx={getMechCardSx(mech.color)}
                         >
-                            <CardContent sx={{ p: 4 }}>
+                            <CardContent sx={styles.cardContent}>
                                 <Box
                                     component="img"
                                     className="mech-icon"
                                     src={mech.icon}
                                     alt={mech.title}
-                                    sx={{
-                                        width: 80, height: 80,
-                                        objectFit: 'contain',
-                                        mb: 3,
-                                        transition: 'all 0.4s ease',
-                                    }}
+                                    sx={styles.mechIcon}
                                 />
-                                <Typography
-                                    variant="h4"
-                                    sx={{ fontFamily: '"Cinzel", serif', color: mech.color, mb: 2 }}
-                                >
+                                <Typography variant="h4" sx={getMechTitleSx(mech.color)}>
                                     {mech.title}
                                 </Typography>
-                                <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
+                                <Typography variant="body2" sx={styles.mechDescription}>
                                     {mech.description}
                                 </Typography>
                             </CardContent>

@@ -1,37 +1,70 @@
-import type { Theme } from '@mui/material/styles'
 
 export const styles = {
     appBar: {
-        bgcolor: 'rgba(10, 10, 15, 0.9)',
-        backdropFilter: 'blur(12px)',
-        borderBottom: (t: Theme) => `1px solid ${t.palette.divider}`
+        background: 'transparent',
+        zIndex: 1100,
+        '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            backdropFilter: 'blur(12px)',
+            pointerEvents: 'none',
+        },
     },
     toolbar: {
-        maxWidth: 1200,
-        width: '100%',
+        maxWidth: 1400,
         mx: 'auto',
-        px: { xs: 2, md: 3 }
+        width: '100%',
+        justifyContent: 'space-between',
+        py: 0.5,
+        position: 'relative',
+        zIndex: 1,
     },
     logo: {
-        fontWeight: 800,
-        letterSpacing: '0.12em',
-        color: 'primary.main',
-        mr: 4
+        fontFamily: '"Cinzel", serif',
+        fontWeight: 900,
+        fontSize: '1.3rem',
+        color: '#c4a44a',
+        letterSpacing: '0.15em',
+        textShadow: '0 0 20px rgba(196,164,74,0.3)',
+        cursor: 'none',
     },
-    nav: {
+    navBox: {
         display: { xs: 'none', md: 'flex' },
-        gap: 1,
-        flex: 1
+        gap: 0.5,
     },
     navButton: {
-        color: 'text.secondary',
-        fontSize: '0.8rem',
-        '&:hover': {
-            color: 'primary.main'
-        }
+        color: '#8a8580',
+        fontSize: '0.75rem',
+        fontWeight: 600,
+        letterSpacing: '0.12em',
+        textTransform: 'uppercase',
+        px: 2,
+        position: 'relative',
+        transition: 'color 0.3s',
+        '&:hover': { color: '#c4a44a', background: 'transparent' },
+        '&::after': {
+            content: '""',
+            position: 'absolute',
+            bottom: 4,
+            left: '50%',
+            width: 0,
+            height: 1,
+            background: '#c4a44a',
+            transition: 'all 0.3s',
+            transform: 'translateX(-50%)',
+        },
+        '&:hover::after': { width: '60%' },
+    },
+    actionsBox: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 1,
     },
     playButton: {
-        px: 3,
-        py: 1
-    }
+        fontSize: '0.7rem',
+        px: 2.5,
+        py: 0.8,
+        display: { xs: 'none', sm: 'flex' },
+    },
 }

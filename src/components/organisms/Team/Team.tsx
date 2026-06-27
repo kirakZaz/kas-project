@@ -13,11 +13,7 @@ import { useInView } from 'react-intersection-observer'
 import SectionTitle from '../../atoms/SectionTitle/SectionTitle'
 import SlideGallery from '../../atoms/SlideGallery/SlideGallery'
 import { useImageViewer } from '../../../context/ImageViewerContext'
-
-const GOLD = '#c4a44a'
-const GOLD_DIM = 'rgba(196, 164, 74, 0.15)'
-const GOLD_BORDER = 'rgba(196, 164, 74, 0.3)'
-const CARD_BG = 'rgba(10, 8, 5, 0.85)'
+import { styles } from './Team.styles'
 
 interface TeamMember {
     name: string
@@ -117,106 +113,33 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, index }) => {
             initial="hidden"
             animate={controls}
             variants={fadeUp}
-            sx={{
-                background: CARD_BG,
-                border: `1px solid ${GOLD_BORDER}`,
-                borderRadius: 2,
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                backdropFilter: 'blur(8px)',
-                transition: 'border-color 0.3s, box-shadow 0.3s',
-                '&:hover': {
-                    borderColor: GOLD,
-                    boxShadow: `0 0 24px rgba(196, 164, 74, 0.2)`,
-                },
-            }}
+            sx={styles.memberCard}
         >
-            <CardContent
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 2,
-                    p: 3,
-                    flex: 1,
-                }}
-            >
-                {/* Header */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <Avatar
-                        sx={{
-                            width: 56,
-                            height: 56,
-                            bgcolor: GOLD_DIM,
-                            border: `2px solid ${GOLD}`,
-                            color: GOLD,
-                            fontFamily: "'Cinzel', serif",
-                            fontWeight: 700,
-                            fontSize: '1.1rem',
-                        }}
-                    >
+            <CardContent sx={styles.memberCardContent}>
+                <Box sx={styles.memberHeader}>
+                    <Avatar sx={styles.avatar}>
                         {member.initials}
                     </Avatar>
                     <Box>
-                        <Typography
-                            variant="h3"
-                            sx={{
-                                fontFamily: "'Cinzel', serif",
-                                fontSize: '1.15rem',
-                                fontWeight: 700,
-                                color: GOLD,
-                                lineHeight: 1.2,
-                            }}
-                        >
+                        <Typography variant="h3" sx={styles.memberName}>
                             {member.name}
                         </Typography>
-                        <Typography
-                            variant="body2"
-                            sx={{
-                                color: 'rgba(255,255,255,0.55)',
-                                fontSize: '0.78rem',
-                                fontStyle: 'italic',
-                                mt: 0.25,
-                            }}
-                        >
+                        <Typography variant="body2" sx={styles.memberRole}>
                             {member.role}
                         </Typography>
                     </Box>
                 </Box>
 
-                {/* Contributions */}
                 <Box>
-                    <Typography
-                        variant="overline"
-                        sx={{
-                            color: GOLD,
-                            fontSize: '0.65rem',
-                            letterSpacing: '0.12em',
-                            display: 'block',
-                            mb: 1,
-                        }}
-                    >
+                    <Typography variant="overline" sx={styles.contributionsLabel}>
                         Contributions
                     </Typography>
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>
+                    <Box sx={styles.chipContainer}>
                         {member.contributions.map((c) => (
-                            <Chip
-                                key={c}
-                                label={c}
-                                size="small"
-                                sx={{
-                                    bgcolor: GOLD_DIM,
-                                    color: 'rgba(255,255,255,0.85)',
-                                    border: `1px solid ${GOLD_BORDER}`,
-                                    fontSize: '0.7rem',
-                                    height: 24,
-                                    '& .MuiChip-label': { px: 1 },
-                                }}
-                            />
+                            <Chip key={c} label={c} size="small" sx={styles.chip} />
                         ))}
                     </Box>
                 </Box>
-
             </CardContent>
         </MotionCard>
     )
@@ -242,28 +165,16 @@ function ImageCarousel({ title, subtitle, images, altPrefix }: ImageCarouselProp
                 hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0, 0, 0.2, 1] as const } },
             }}
-            sx={{ mt: 6 }}
+            sx={styles.carouselWrapper}
         >
-            <Box sx={{ mb: 3 }}>
-                <Typography
-                    variant="h4"
-                    sx={{
-                        fontFamily: "'Cinzel', serif",
-                        color: GOLD,
-                        fontSize: { xs: '1.1rem', md: '1.35rem' },
-                        fontWeight: 600,
-                        mb: 0.5,
-                    }}
-                >
+            <Box sx={styles.carouselHeaderBox}>
+                <Typography variant="h4" sx={styles.carouselTitle}>
                     {title}
                 </Typography>
-                <Typography
-                    variant="body2"
-                    sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.85rem' }}
-                >
+                <Typography variant="body2" sx={styles.carouselSubtitle}>
                     {subtitle}
                 </Typography>
-                <Box sx={{ mt: 1.5, width: 48, height: 2, bgcolor: GOLD, borderRadius: 1 }} />
+                <Box sx={styles.carouselDivider} />
             </Box>
 
             <SlideGallery itemWidth={{ xs: 260, sm: 300, md: 340 }}>
@@ -272,19 +183,7 @@ function ImageCarousel({ title, subtitle, images, altPrefix }: ImageCarouselProp
                         key={i}
                         data-cursor="pointer"
                         onClick={() => openImage(src, `${altPrefix} ${i + 1}`)}
-                        sx={{
-                            height: { xs: 180, sm: 210, md: 240 },
-                            borderRadius: 2,
-                            overflow: 'hidden',
-                            border: `1px solid ${GOLD_BORDER}`,
-                            bgcolor: 'rgba(0,0,0,0.5)',
-                            transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
-                            '&:hover': {
-                                borderColor: GOLD,
-                                transform: 'scale(1.03)',
-                                boxShadow: '0 0 18px rgba(196,164,74,0.25)',
-                            },
-                        }}
+                        sx={styles.carouselImageBox}
                     >
                         <img
                             src={src}
@@ -306,27 +205,15 @@ function ImageCarousel({ title, subtitle, images, altPrefix }: ImageCarouselProp
 
 const Team = React.memo(function Team() {
     return (
-        <Box
-            id="team"
-            sx={{
-                py: { xs: 8, md: 12 },
-                px: { xs: 2, sm: 4, md: 8 },
-                position: 'relative',
-                background:
-                    'linear-gradient(180deg, rgba(5,4,2,0) 0%, rgba(8,6,3,0.6) 100%)',
-            }}
-        >
+        <Box id="team" sx={styles.section}>
             <SectionTitle
                 title="Team & Collaboration"
                 subtitle="Team KAS — Torrens University RGP204"
             />
 
-            <Grid container spacing={3} sx={{ mt: 2 }}>
+            <Grid container spacing={3} sx={styles.grid}>
                 {MEMBERS.map((member, index) => (
-                    <Grid
-                        key={member.name}
-                        size={{ xs: 12, sm: 6, md: 4 }}
-                    >
+                    <Grid key={member.name} size={{ xs: 12, sm: 6, md: 4 }}>
                         <MemberCard member={member} index={index} />
                     </Grid>
                 ))}

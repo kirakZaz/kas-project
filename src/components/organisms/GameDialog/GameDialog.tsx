@@ -4,6 +4,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 import VerifiedRoundedIcon from '@mui/icons-material/VerifiedRounded'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import type { GameDialogProps } from './GameDialog.types'
+import { styles } from './GameDialog.styles'
 
 const GITHUB_REPO = 'https://github.com/kirakZaz/kas-project'
 const GITHUB_COMMITS = 'https://github.com/kirakZaz/kas-project/commits/main'
@@ -15,59 +16,34 @@ const VerifyModal = React.memo(function VerifyModal({ open, onClose }: { open: b
             onClose={onClose}
             maxWidth="sm"
             fullWidth
-            sx={{
-                zIndex: 1400,
-                '& .MuiDialog-paper': {
-                    bgcolor: '#0a0a12',
-                    border: '1px solid rgba(196,164,74,0.25)',
-                    borderRadius: 2,
-                },
-            }}
+            sx={styles.verifyDialog}
         >
-            <Box sx={{
-                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                px: 3, py: 1.5, borderBottom: '1px solid rgba(196,164,74,0.15)',
-            }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <VerifiedRoundedIcon sx={{ color: '#4caf50', fontSize: 20 }} />
-                    <Typography sx={{ fontFamily: '"Cinzel", serif', color: '#c4a44a', fontWeight: 700, fontSize: '1rem' }}>
+            <Box sx={styles.verifyHeader}>
+                <Box sx={styles.verifyHeaderLeft}>
+                    <VerifiedRoundedIcon sx={styles.verifyIcon} />
+                    <Typography sx={styles.verifyTitle}>
                         Build Verification
                     </Typography>
                 </Box>
-                <IconButton onClick={onClose} sx={{ color: '#8a8580' }}>
+                <IconButton onClick={onClose} sx={styles.verifyCloseButton}>
                     <CloseRoundedIcon fontSize="small" />
                 </IconButton>
             </Box>
 
-            <Box sx={{ p: 3 }}>
-                <Typography variant="body2" sx={{ color: '#8a8580', mb: 2, lineHeight: 1.8 }}>
+            <Box sx={styles.verifyBody}>
+                <Typography variant="body2" sx={styles.verifyBodyText}>
                     This WebGL build was committed to the repository before the assessment due date.
                     You can verify the exact commit timestamp on GitHub.
                 </Typography>
 
                 {/* Commit screenshot placeholder */}
-                <Box sx={{
-                    width: '100%',
-                    aspectRatio: '16/9',
-                    bgcolor: 'rgba(0,0,0,0.4)',
-                    border: '1px solid rgba(196,164,74,0.15)',
-                    borderRadius: 1,
-                    mb: 3,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    overflow: 'hidden',
-                }}>
+                <Box sx={styles.verifyScreenshotBox}>
                     {/* Replace src with actual screenshot when ready */}
                     <Box
                         component="img"
                         src="/assets/verify/commit-screenshot.png"
                         alt="Git commit screenshot"
-                        sx={{
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'contain',
-                        }}
+                        sx={styles.verifyScreenshotImg}
                         onError={(e) => {
                             const el = e.currentTarget as HTMLImageElement
                             el.style.display = 'none'
@@ -76,7 +52,7 @@ const VerifyModal = React.memo(function VerifyModal({ open, onClose }: { open: b
                     />
                 </Box>
 
-                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                <Box sx={styles.verifyButtonRow}>
                     <Button
                         variant="outlined"
                         startIcon={<GitHubIcon />}
@@ -84,13 +60,7 @@ const VerifyModal = React.memo(function VerifyModal({ open, onClose }: { open: b
                         target="_blank"
                         rel="noopener noreferrer"
                         data-cursor="pointer"
-                        sx={{
-                            color: '#c4a44a',
-                            borderColor: 'rgba(196,164,74,0.3)',
-                            fontSize: '0.75rem',
-                            textTransform: 'none',
-                            '&:hover': { borderColor: '#c4a44a', bgcolor: 'rgba(196,164,74,0.08)' },
-                        }}
+                        sx={styles.verifyCommitsButton}
                     >
                         View Commit History
                     </Button>
@@ -101,13 +71,7 @@ const VerifyModal = React.memo(function VerifyModal({ open, onClose }: { open: b
                         target="_blank"
                         rel="noopener noreferrer"
                         data-cursor="pointer"
-                        sx={{
-                            color: '#8a8580',
-                            borderColor: 'rgba(138,133,128,0.3)',
-                            fontSize: '0.75rem',
-                            textTransform: 'none',
-                            '&:hover': { borderColor: '#8a8580', bgcolor: 'rgba(138,133,128,0.08)' },
-                        }}
+                        sx={styles.verifyRepoButton}
                     >
                         View Repository
                     </Button>
@@ -126,29 +90,11 @@ const GameDialog = React.memo(function GameDialog({ isOpen, onClose }: GameDialo
                 open={isOpen}
                 onClose={onClose}
                 fullScreen
-                sx={{
-                    '& .MuiDialog-paper': {
-                        bgcolor: '#000',
-                        border: 'none',
-                    },
-                }}
+                sx={styles.gameDialog}
             >
-                <Box sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    px: 3, py: 1.5,
-                    borderBottom: '1px solid rgba(196,164,74,0.15)',
-                }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                        <Typography sx={{
-                            fontFamily: '"Cinzel", serif',
-                            color: '#c4a44a',
-                            fontWeight: 900,
-                            fontSize: '1.3rem',
-                            letterSpacing: '0.1em',
-                            textShadow: '0 0 12px rgba(196,164,74,0.3)',
-                        }}>
+                <Box sx={styles.gameHeader}>
+                    <Box sx={styles.gameHeaderLeft}>
+                        <Typography sx={styles.gameTitle}>
                             KAS
                         </Typography>
                         <Button
@@ -156,35 +102,21 @@ const GameDialog = React.memo(function GameDialog({ isOpen, onClose }: GameDialo
                             startIcon={<VerifiedRoundedIcon sx={{ fontSize: 16 }} />}
                             onClick={() => setVerifyOpen(true)}
                             data-cursor="pointer"
-                            sx={{
-                                color: '#4caf50',
-                                fontSize: '0.65rem',
-                                textTransform: 'none',
-                                letterSpacing: '0.05em',
-                                border: '1px solid rgba(76,175,80,0.2)',
-                                borderRadius: 1,
-                                px: 1.5, py: 0.3,
-                                '&:hover': { bgcolor: 'rgba(76,175,80,0.08)', borderColor: 'rgba(76,175,80,0.4)' },
-                            }}
+                            sx={styles.verifyBuildButton}
                         >
                             Verify Build
                         </Button>
                     </Box>
-                    <IconButton onClick={onClose} data-cursor="pointer" sx={{ color: '#8a8580' }}>
+                    <IconButton onClick={onClose} data-cursor="pointer" sx={styles.gameCloseButton}>
                         <CloseRoundedIcon />
                     </IconButton>
                 </Box>
-                <DialogContent sx={{ p: 0, display: 'flex', flex: 1, overflow: 'hidden' }}>
+                <DialogContent sx={styles.gameContent}>
                     <Box
                         component="iframe"
                         src="/game/build/index.html"
                         title="KAS Game"
-                        sx={{
-                            width: '100%',
-                            height: '100%',
-                            border: 'none',
-                            flex: 1,
-                        }}
+                        sx={styles.gameIframe}
                         allow="autoplay; fullscreen"
                     />
                 </DialogContent>

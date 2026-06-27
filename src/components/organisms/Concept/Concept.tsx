@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer'
 import SectionTitle from '../../atoms/SectionTitle/SectionTitle'
 import SlideGallery from '../../atoms/SlideGallery/SlideGallery'
 import { useImageViewer } from '../../../context/ImageViewerContext'
+import { styles } from './Concept.styles'
 
 // ─── Tab data ────────────────────────────────────────────────────────────────
 
@@ -220,24 +221,7 @@ const TiltCard = React.memo(function TiltCard({ item, onClick }: TiltCardProps) 
                 onClick={() => onClick(item.image, item.title)}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                sx={{
-                    position: 'relative',
-                    cursor: 'pointer',
-                    background: 'rgba(18, 10, 4, 0.72)',
-                    border: '1px solid rgba(212, 175, 55, 0.18)',
-                    borderRadius: '10px',
-                    overflow: 'hidden',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    willChange: 'transform',
-                    transformStyle: 'preserve-3d',
-                    transition: 'transform 0.18s ease, box-shadow 0.18s ease',
-                    boxShadow: '0 4px 24px rgba(0,0,0,0.55)',
-                    '&:hover': {
-                        boxShadow: '0 12px 40px rgba(212,175,55,0.22), 0 4px 24px rgba(0,0,0,0.7)',
-                        borderColor: 'rgba(212,175,55,0.45)',
-                    },
-                }}
+                sx={styles.tiltCard}
             >
                 {/* Glare overlay */}
                 <div
@@ -257,37 +241,13 @@ const TiltCard = React.memo(function TiltCard({ item, onClick }: TiltCardProps) 
                     component="img"
                     image={item.image}
                     alt={item.title}
-                    sx={{
-                        aspectRatio: '4/3',
-                        width: '100%',
-                        objectFit: 'cover',
-                        objectPosition: 'center top',
-                        display: 'block',
-                        flexShrink: 0,
-                    }}
+                    sx={styles.tiltCardMedia}
                 />
 
-                <CardContent
-                    sx={{
-                        flexGrow: 1,
-                        display: 'flex',
-                        alignItems: 'center',
-                        py: '10px !important',
-                        px: 1.5,
-                        background: 'rgba(10, 5, 2, 0.55)',
-                        borderTop: '1px solid rgba(212,175,55,0.12)',
-                    }}
-                >
+                <CardContent sx={styles.tiltCardContent}>
                     <Typography
                         variant="body2"
-                        sx={{
-                            color: 'rgba(240,220,170,0.9)',
-                            fontFamily: 'Raleway, sans-serif',
-                            fontWeight: 500,
-                            fontSize: '0.78rem',
-                            letterSpacing: '0.03em',
-                            lineHeight: 1.35,
-                        }}
+                        sx={styles.tiltCardTitle}
                     >
                         {item.title}
                     </Typography>
@@ -322,12 +282,7 @@ const Concept = React.memo(function Concept() {
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{ duration: 0.6, ease: [0, 0, 0.2, 1] as const }}
-            sx={{
-                py: { xs: 6, md: 10 },
-                px: { xs: 2, sm: 4, md: 6 },
-                maxWidth: 1280,
-                mx: 'auto',
-            }}
+            sx={styles.section}
         >
             <SectionTitle
                 title="Concept & Design"
@@ -335,28 +290,14 @@ const Concept = React.memo(function Concept() {
             />
 
             {/* Tabs bar */}
-            <Box
-                sx={{
-                    mb: 4,
-                    borderBottom: '1px solid rgba(212,175,55,0.2)',
-                }}
-            >
+            <Box sx={styles.tabsBarBox}>
                 <Tabs
                     value={activeTab}
                     onChange={handleTabChange}
                     variant="scrollable"
                     scrollButtons="auto"
                     allowScrollButtonsMobile
-                    sx={{
-                        minHeight: 44,
-                        '& .MuiTabs-indicator': {
-                            backgroundColor: '#D4AF37',
-                            height: 2,
-                        },
-                        '& .MuiTabs-scrollButtons': {
-                            color: 'rgba(212,175,55,0.7)',
-                        },
-                    }}
+                    sx={styles.tabs}
                 >
                     {TABS.map((tab, index) => (
                         <Tab
@@ -364,23 +305,7 @@ const Concept = React.memo(function Concept() {
                             label={tab.label}
                             id={`concept-tab-${index}`}
                             aria-controls={`concept-tabpanel-${index}`}
-                            sx={{
-                                fontFamily: 'Raleway, sans-serif',
-                                fontWeight: 600,
-                                fontSize: '0.82rem',
-                                letterSpacing: '0.06em',
-                                textTransform: 'uppercase',
-                                color: 'rgba(200,180,120,0.65)',
-                                minHeight: 44,
-                                px: 2,
-                                transition: 'color 0.2s ease',
-                                '&.Mui-selected': {
-                                    color: '#D4AF37',
-                                },
-                                '&:hover': {
-                                    color: 'rgba(212,175,55,0.9)',
-                                },
-                            }}
+                            sx={styles.tab}
                         />
                     ))}
                 </Tabs>

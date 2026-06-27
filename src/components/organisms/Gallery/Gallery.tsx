@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import SectionTitle from '../../atoms/SectionTitle/SectionTitle'
 import SlideGallery from '../../atoms/SlideGallery/SlideGallery'
+import { useImageViewer } from '../../../context/ImageViewerContext'
+import { styles } from './Gallery.styles'
 
 const VIDEOS = [
     { title: 'Latest Build',       src: '/assets/video/gameplay-11.mp4' },
@@ -27,6 +29,7 @@ interface VideoCardProps {
 const VideoCard = React.memo(function VideoCard({ title, src }: VideoCardProps) {
     const videoRef = useRef<HTMLVideoElement>(null)
     const [isHovered, setIsHovered] = useState(false)
+    const { openVideo } = useImageViewer()
 
     const handleMouseEnter = useCallback(() => {
         setIsHovered(true)
@@ -46,24 +49,21 @@ const VideoCard = React.memo(function VideoCard({ title, src }: VideoCardProps) 
         }
     }, [])
 
+    const handleClick = useCallback(() => {
+        const el = videoRef.current
+        if (el) el.pause()
+        openVideo(src, title)
+    }, [src, title, openVideo])
+
     return (
         <Card
             data-cursor="pointer"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            sx={{
-                background: 'rgba(10,10,10,0.75)',
-                border: '1px solid rgba(212,175,55,0.18)',
-                borderRadius: 2,
-                overflow: 'hidden',
-                transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
-                '&:hover': {
-                    boxShadow: '0 0 18px rgba(212,175,55,0.35), 0 4px 24px rgba(0,0,0,0.6)',
-                    borderColor: 'rgba(212,175,55,0.55)',
-                },
-            }}
+            onClick={handleClick}
+            sx={styles.card}
         >
-            <Box sx={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden' }}>
+            <Box sx={styles.videoWrapper}>
                 <Box
                     ref={videoRef}
                     component="video"
@@ -72,51 +72,14 @@ const VideoCard = React.memo(function VideoCard({ title, src }: VideoCardProps) 
                     loop
                     playsInline
                     preload="metadata"
-                    sx={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        display: 'block',
-                        transition: 'transform 0.4s ease',
-                        transform: isHovered ? 'scale(1.03)' : 'scale(1)',
-                    }}
+                    sx={{ ...styles.video, transform: isHovered ? 'scale(1.03)' : 'scale(1)' }}
                 />
-                <Box
-                    sx={{
-                        position: 'absolute',
-                        inset: 0,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        background: 'rgba(0,0,0,0.35)',
-                        opacity: isHovered ? 0 : 1,
-                        transition: 'opacity 0.3s ease',
-                        pointerEvents: 'none',
-                    }}
-                >
-                    <Box
-                        sx={{
-                            width: 0, height: 0,
-                            borderTop: '18px solid transparent',
-                            borderBottom: '18px solid transparent',
-                            borderLeft: '30px solid rgba(212,175,55,0.92)',
-                            filter: 'drop-shadow(0 0 8px rgba(212,175,55,0.7))',
-                            ml: '4px',
-                        }}
-                    />
+                <Box sx={{ ...styles.overlay, opacity: isHovered ? 0 : 1 }}>
+                    <Box sx={styles.playIcon} />
                 </Box>
             </Box>
-            <CardContent sx={{ py: 1.2, px: 2, '&:last-child': { pb: 1.4 } }}>
-                <Typography
-                    variant="body2"
-                    sx={{
-                        color: 'rgba(212,175,55,0.85)',
-                        fontFamily: '"Cinzel", serif',
-                        fontSize: '0.78rem',
-                        letterSpacing: '0.04em',
-                        textAlign: 'center',
-                    }}
-                >
+            <CardContent sx={styles.cardContent}>
+                <Typography variant="body2" sx={styles.cardTitle}>
                     {title}
                 </Typography>
             </CardContent>
@@ -136,12 +99,7 @@ const Gallery = React.memo(function Gallery() {
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: [0, 0, 0.2, 1] as const }}
-            sx={{
-                py: { xs: 6, md: 10 },
-                px: { xs: 2, sm: 4, md: 6 },
-                maxWidth: 1280,
-                mx: 'auto',
-            }}
+            sx={styles.section}
         >
             <SectionTitle
                 title="Gallery"

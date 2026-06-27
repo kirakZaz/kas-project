@@ -1,19 +1,38 @@
-import type { Theme } from '@mui/material/styles'
 
 export const styles = {
-    footer: {
-        py: 4,
+    root: {
+        py: 6,
         px: 3,
         textAlign: 'center',
-        borderTop: (t: Theme) => `1px solid ${t.palette.divider}`
+        borderTop: '1px solid rgba(196,164,74,0.08)',
+        position: 'relative',
+        '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: -1,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 60,
+            height: 1,
+            background: 'linear-gradient(90deg, transparent, #c4a44a, transparent)',
+        },
     },
-    text: {
-        color: 'text.secondary',
-        mb: 0.5
+    title: {
+        fontFamily: '"Cinzel", serif',
+        color: '#c4a44a',
+        fontSize: '1.2rem',
+        fontWeight: 700,
+        letterSpacing: '0.15em',
+        mb: 1,
     },
-    subtext: {
-        color: 'text.secondary',
-        opacity: 0.6,
-        fontSize: '0.75rem'
-    }
+    subtitle: {
+        color: '#4a4540',
+        mb: 0.5,
+        letterSpacing: '0.05em',
+    },
+    credits: {
+        color: '#3a3530',
+        fontSize: '0.75rem',
+        letterSpacing: '0.08em',
+    },
 }

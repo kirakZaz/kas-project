@@ -3,6 +3,7 @@ import { Box, Typography, Card, useMediaQuery, useTheme } from '@mui/material'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useImageViewer } from '../../../context/ImageViewerContext'
+import { styles } from './Process.styles'
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -68,7 +69,6 @@ const SPRINTS: Sprint[] = [
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
 const GOLD = '#c4a44a'
-
 const GOLD_GLOW = '0 0 12px rgba(196,164,74,0.6), 0 0 24px rgba(196,164,74,0.3)'
 
 interface SprintImageProps {
@@ -87,18 +87,8 @@ const SprintImage: React.FC<SprintImageProps> = ({ src, alt, wide }) => {
             data-cursor="pointer"
             onClick={() => openImage(src, alt)}
             sx={{
-                width: '100%',
-                ...(wide
-                    ? { maxHeight: 200, objectFit: 'contain', bgcolor: 'rgba(0,0,0,0.3)' }
-                    : { aspectRatio: '4/3', objectFit: 'cover' }),
-                borderRadius: '6px',
-                border: `1px solid rgba(196,164,74,0.2)`,
-                transition: 'transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease',
-                '&:hover': {
-                    transform: 'scale(1.03)',
-                    boxShadow: GOLD_GLOW,
-                    borderColor: GOLD,
-                },
+                ...styles.sprintImageBase,
+                ...(wide ? styles.sprintImageWide : styles.sprintImageThumb),
             }}
         />
     )
@@ -124,46 +114,13 @@ const SprintCard: React.FC<SprintCardProps> = ({ sprint, index, isRight }) => {
             transition={{ duration: 0.65, ease: [0, 0, 0.2, 1] as const, delay: 0.05 }}
             style={{ width: '100%' }}
         >
-            <Card
-                sx={{
-                    background: 'linear-gradient(135deg, rgba(18,15,10,0.95) 0%, rgba(28,22,12,0.95) 100%)',
-                    border: `1px solid rgba(196,164,74,0.25)`,
-                    borderRadius: '12px',
-                    overflow: 'hidden',
-                    backdropFilter: 'blur(8px)',
-                    transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
-                    '&:hover': {
-                        borderColor: `rgba(196,164,74,0.55)`,
-                        boxShadow: `0 8px 40px rgba(196,164,74,0.12)`,
-                    },
-                }}
-            >
+            <Card sx={styles.sprintCard}>
                 {/* Header */}
-                <Box
-                    sx={{
-                        px: 3,
-                        py: 2,
-                        borderBottom: `1px solid rgba(196,164,74,0.2)`,
-                        background: `linear-gradient(90deg, rgba(196,164,74,0.08) 0%, transparent 100%)`,
-                        display: 'flex',
-                        alignItems: 'baseline',
-                        gap: 2,
-                        flexWrap: 'wrap',
-                    }}
-                >
-                    <Typography
-                        sx={{
-                            fontFamily: 'Cinzel, serif',
-                            fontWeight: 700,
-                            fontSize: { xs: '1rem', md: '1.15rem' },
-                            color: GOLD,
-                            letterSpacing: '0.08em',
-                            textShadow: `0 0 8px rgba(196,164,74,0.5)`,
-                        }}
-                    >
+                <Box sx={styles.sprintCardHeader}>
+                    <Typography sx={styles.sprintCardTitle}>
                         {sprint.name}
                         {' — '}
-                        <Box component="span" sx={{ fontWeight: 400 }}>
+                        <Box component="span" sx={styles.sprintCardTitleSubSpan}>
                             {/* Sprint subtitle derived from jira filename */}
                             {index === 0 && 'Init + Double Jump'}
                             {index === 1 && 'I-Frames'}
@@ -171,31 +128,15 @@ const SprintCard: React.FC<SprintCardProps> = ({ sprint, index, isRight }) => {
                             {index === 3 && 'Assessment'}
                         </Box>
                     </Typography>
-                    <Typography
-                        sx={{
-                            fontFamily: 'Cinzel, serif',
-                            fontSize: '0.78rem',
-                            color: 'rgba(196,164,74,0.6)',
-                            letterSpacing: '0.06em',
-                        }}
-                    >
+                    <Typography sx={styles.sprintCardDates}>
                         {sprint.dates}
                     </Typography>
                 </Box>
 
-                <Box sx={{ p: 3, display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+                <Box sx={styles.sprintCardBody}>
                     {/* Jira screenshot */}
                     <Box>
-                        <Typography
-                            sx={{
-                                fontFamily: 'Cinzel, serif',
-                                fontSize: '0.7rem',
-                                color: 'rgba(196,164,74,0.5)',
-                                letterSpacing: '0.12em',
-                                textTransform: 'uppercase',
-                                mb: 1,
-                            }}
-                        >
+                        <Typography sx={styles.sprintCardSectionLabel}>
                             Jira Board
                         </Typography>
                         <SprintImage src={sprint.jira} alt={`${sprint.name} Jira board`} wide />
@@ -203,25 +144,10 @@ const SprintCard: React.FC<SprintCardProps> = ({ sprint, index, isRight }) => {
 
                     {/* Work images */}
                     <Box>
-                        <Typography
-                            sx={{
-                                fontFamily: 'Cinzel, serif',
-                                fontSize: '0.7rem',
-                                color: 'rgba(196,164,74,0.5)',
-                                letterSpacing: '0.12em',
-                                textTransform: 'uppercase',
-                                mb: 1,
-                            }}
-                        >
+                        <Typography sx={styles.sprintCardSectionLabel}>
                             Work
                         </Typography>
-                        <Box
-                            sx={{
-                                display: 'grid',
-                                gridTemplateColumns: 'repeat(3, 1fr)',
-                                gap: 1.5,
-                            }}
-                        >
+                        <Box sx={styles.sprintCardImageGrid}>
                             {sprint.images.map((img, i) => (
                                 <SprintImage
                                     key={i}
@@ -233,16 +159,7 @@ const SprintCard: React.FC<SprintCardProps> = ({ sprint, index, isRight }) => {
                     </Box>
 
                     {/* Description */}
-                    <Typography
-                        variant="body2"
-                        sx={{
-                            color: 'rgba(255,255,255,0.72)',
-                            lineHeight: 1.75,
-                            fontSize: '0.9rem',
-                            borderLeft: `2px solid rgba(196,164,74,0.35)`,
-                            pl: 2,
-                        }}
-                    >
+                    <Typography variant="body2" sx={styles.sprintCardDescription}>
                         {sprint.description}
                     </Typography>
                 </Box>
@@ -289,19 +206,7 @@ const AnimatedTimelineLine: React.FC = () => {
     const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1])
 
     return (
-        <Box
-            ref={ref}
-            sx={{
-                position: 'absolute',
-                left: '50%',
-                top: 0,
-                bottom: 0,
-                width: '2px',
-                transform: 'translateX(-50%)',
-                background: 'rgba(196,164,74,0.12)',
-                zIndex: 0,
-            }}
-        >
+        <Box ref={ref} sx={styles.timelineLineTrack}>
             <motion.div
                 style={{
                     position: 'absolute',
@@ -333,27 +238,11 @@ const SprintRow: React.FC<SprintRowProps> = ({ sprint, index, isMobile }) => {
 
     if (isMobile) {
         return (
-            <Box
-                ref={dotRef}
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    mb: 5,
-                    position: 'relative',
-                }}
-            >
+            <Box ref={dotRef} sx={styles.sprintRowMobileOuter}>
                 {/* Mobile: dot on left, card full width */}
-                <Box
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        width: '100%',
-                        gap: 2,
-                    }}
-                >
+                <Box sx={styles.sprintRowMobileInner}>
                     {/* Dot column */}
-                    <Box sx={{ position: 'relative', width: 20, flexShrink: 0, mt: 2 }}>
+                    <Box sx={styles.sprintRowMobileDotCol}>
                         <motion.div
                             initial={{ scale: 0, opacity: 0 }}
                             animate={dotInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
@@ -368,7 +257,7 @@ const SprintRow: React.FC<SprintRowProps> = ({ sprint, index, isMobile }) => {
                         />
                     </Box>
                     {/* Card */}
-                    <Box sx={{ flex: 1 }}>
+                    <Box sx={styles.sprintRowMobileCardCol}>
                         <SprintCard sprint={sprint} index={index} isRight={false} />
                     </Box>
                 </Box>
@@ -377,29 +266,19 @@ const SprintRow: React.FC<SprintRowProps> = ({ sprint, index, isMobile }) => {
     }
 
     return (
-        <Box
-            ref={dotRef}
-            sx={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 48px 1fr',
-                alignItems: 'center',
-                mb: { md: 8 },
-                position: 'relative',
-                minHeight: '60px',
-            }}
-        >
+        <Box ref={dotRef} sx={styles.sprintRowDesktopGrid}>
             {/* Left slot */}
-            <Box sx={{ pr: 3, display: 'flex', justifyContent: 'flex-end' }}>
+            <Box sx={styles.sprintRowLeftSlot}>
                 {!isRight && <SprintCard sprint={sprint} index={index} isRight={false} />}
             </Box>
 
             {/* Center dot */}
-            <Box sx={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', pt: 2 }}>
+            <Box sx={styles.sprintRowCenterDot}>
                 <TimelineDot inView={dotInView} />
             </Box>
 
             {/* Right slot */}
-            <Box sx={{ pl: 3, display: 'flex', justifyContent: 'flex-start' }}>
+            <Box sx={styles.sprintRowRightSlot}>
                 {isRight && <SprintCard sprint={sprint} index={index} isRight={true} />}
             </Box>
         </Box>
@@ -415,15 +294,7 @@ const Process: React.FC = () => {
     const timelineRef = useRef<HTMLDivElement>(null)
 
     return (
-        <Box
-            id="timeline"
-            sx={{
-                py: { xs: 8, md: 12 },
-                px: { xs: 2, sm: 4, md: 6 },
-                maxWidth: '1200px',
-                mx: 'auto',
-            }}
-        >
+        <Box id="timeline" sx={styles.processSection}>
             {/* Section heading */}
             <motion.div
                 initial={{ opacity: 0, y: -24 }}
@@ -431,41 +302,12 @@ const Process: React.FC = () => {
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.7, ease: [0, 0, 0.2, 1] as const }}
             >
-                <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 10 } }}>
-                    <Typography
-                        component="h2"
-                        sx={{
-                            fontFamily: 'Cinzel, serif',
-                            fontWeight: 900,
-                            fontSize: { xs: '2rem', sm: '2.6rem', md: '3.2rem' },
-                            color: GOLD,
-                            letterSpacing: '0.1em',
-                            textTransform: 'uppercase',
-                            textShadow: GOLD_GLOW,
-                            mb: 1.5,
-                        }}
-                    >
+                <Box sx={styles.processHeadingBox}>
+                    <Typography component="h2" sx={styles.processHeadingTitle}>
                         Development Timeline
                     </Typography>
-                    <Box
-                        sx={{
-                            width: 80,
-                            height: 2,
-                            background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)`,
-                            mx: 'auto',
-                            mb: 2,
-                            boxShadow: GOLD_GLOW,
-                        }}
-                    />
-                    <Typography
-                        sx={{
-                            fontFamily: 'Cinzel, serif',
-                            fontSize: { xs: '0.85rem', md: '0.95rem' },
-                            color: 'rgba(196,164,74,0.6)',
-                            letterSpacing: '0.15em',
-                            textTransform: 'uppercase',
-                        }}
-                    >
+                    <Box sx={styles.processHeadingDivider} />
+                    <Typography sx={styles.processHeadingSubtitle}>
                         4 Sprints · Iterative Prototyping · Agile Workflow
                     </Typography>
                 </Box>
@@ -474,23 +316,7 @@ const Process: React.FC = () => {
             {/* Timeline container */}
             <Box
                 ref={timelineRef}
-                sx={{
-                    position: 'relative',
-                    // On mobile, shift line to the left alongside dots
-                    ...(isMobile && {
-                        pl: '28px',
-                        '&::before': {
-                            content: '""',
-                            position: 'absolute',
-                            left: '9px',
-                            top: 0,
-                            bottom: 0,
-                            width: '2px',
-                            background: `linear-gradient(180deg, ${GOLD} 0%, rgba(196,164,74,0.15) 100%)`,
-                            boxShadow: GOLD_GLOW,
-                        },
-                    }),
-                }}
+                sx={isMobile ? styles.timelineContainerMobile : styles.timelineContainerDesktop}
             >
                 {/* Desktop animated line */}
                 {!isMobile && <AnimatedTimelineLine />}
