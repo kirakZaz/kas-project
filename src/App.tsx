@@ -26,9 +26,13 @@ const App = React.memo(function App() {
 
     return (
         <ImageViewerProvider>
-            <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', position: 'relative', cursor: 'none' }}>
-                <GlobalStyles styles={{ '*, *::before, *::after': { cursor: 'none !important' } }} />
-                <CustomCursor />
+            <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', position: 'relative', cursor: isGameOpen ? 'auto' : 'none' }}>
+                <GlobalStyles styles={{
+                    '*, *::before, *::after': {
+                        cursor: isGameOpen ? 'auto !important' : 'none !important'
+                    }
+                }} />
+                {!isGameOpen && <CustomCursor />}
                 <ParticleField />
                 <Header onPlayClick={handleOpenGame} />
                 <Hero onPlayClick={handleOpenGame} />
