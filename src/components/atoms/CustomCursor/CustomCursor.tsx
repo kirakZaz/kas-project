@@ -3,13 +3,13 @@ import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 // Golden palette matching the gothic theme
 const GOLD = '#C9A84C'
-const GOLD_GLOW = 'rgba(201, 168, 76, 0.55)'
+const GOLD_GLOW = 'rgba(201, 168, 76, 0.45)'
 const GOLD_HOVER = '#FFD700'
-const GOLD_HOVER_GLOW = 'rgba(255, 215, 0, 0.7)'
+const GOLD_HOVER_GLOW = 'rgba(255, 215, 0, 0.4)'
 
 // Sizes
 const RING_SIZE_DEFAULT = 12
-const RING_SIZE_HOVER = 32
+const RING_SIZE_HOVER = 20
 const DOT_SIZE = 4
 
 // Spring config: the ring lags behind, the dot snaps immediately
