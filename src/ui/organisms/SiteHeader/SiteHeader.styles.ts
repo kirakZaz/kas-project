@@ -38,26 +38,14 @@ export const styles = {
         letterSpacing: '0.12em',
         textTransform: 'uppercase',
         px: 2,
-        position: 'relative',
-        transition: 'color 0.3s',
-        '&:hover': { color: '#c4a44a', backgroundColor: 'transparent !important' },
-        '&:focus, &:focus-visible': { backgroundColor: 'transparent !important' },
-        '&.Mui-focusVisible': { backgroundColor: 'transparent !important' },
-        '&.MuiTouchRipple-root': { display: 'none' },
-        '&::after': {
-            content: '""',
-            position: 'absolute',
-            bottom: 4,
-            left: '50%',
-            width: 0,
-            height: 1,
-            background: '#c4a44a',
-            transition: 'all 0.3s',
-            transform: 'translateX(-50%)',
+        py: 0.6,
+        borderRadius: '3px',
+        transition: 'color 0.25s ease, background-color 0.25s ease',
+        // Hover + active: full-width gold fill with black text.
+        '&:hover, &.active, &.Mui-focusVisible': {
+            color: '#06060c !important',
+            backgroundColor: '#c4a44a !important',
         },
-        '&:hover::after': { width: '60%' },
-        '&.active': { color: '#c4a44a' },
-        '&.active::after': { width: '60%' },
     } satisfies any,
 
     actionsBox: {
