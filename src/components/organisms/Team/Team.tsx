@@ -30,7 +30,6 @@ const MEMBERS: TeamMember[] = [
         contributions: [
             'All game mechanics — Double Jump, I-Frames, Glide',
             'Unity C# programming & integration',
-            'Level design, layout & scene building',
             'UI system & HUD implementation',
             'Texture application & materials setup',
             'Sound implementation in Unity',

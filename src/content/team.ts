@@ -7,13 +7,13 @@ export const TEAM_CARDS: TeamCard[] = [
         name: 'Kira Zakirov',
         initials: 'KZ',
         role: 'Lead Developer',
-        contributions: ['Game mechanics', 'Unity programming', 'Level design', 'UI', 'WebGL build', 'Website'],
+        contributions: ['Game mechanics', 'Unity programming', 'UI', 'WebGL build', 'Website'],
     },
     {
         name: 'Sarah Assiri',
         initials: 'SA',
-        role: '3D Artist & Animator',
-        contributions: ['Character modeling', 'Rigging', 'Animation', 'Texturing', 'VFX'],
+        role: '3D Artist, Animator & Level Designer',
+        contributions: ['Character modeling', 'Rigging', 'Animation', 'Level design', 'Texturing', 'VFX'],
     },
     {
         name: 'Alexander Ramic',
@@ -28,12 +28,12 @@ export const TEAM: TeamMember[] = [
     {
         name: 'Kira Zakirov',
         role: 'Lead Developer',
-        contributions: 'Game mechanics, Unity programming, level design, UI, WebGL build, website',
+        contributions: 'Game mechanics, Unity programming, UI, WebGL build, website',
     },
     {
         name: 'Sarah Assiri',
-        role: '3D Artist & Animator',
-        contributions: 'Character modeling, rigging, animation, texturing, VFX',
+        role: '3D Artist, Animator & Level Designer',
+        contributions: 'Character modeling, rigging, animation, level design, texturing, VFX',
     },
     {
         name: 'Alexander Ramic',
