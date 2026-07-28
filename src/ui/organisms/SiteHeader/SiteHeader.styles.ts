@@ -40,9 +40,10 @@ export const styles = {
         px: 2,
         position: 'relative',
         transition: 'color 0.3s',
-        '&:hover': { color: '#c4a44a', background: 'transparent' },
-        '&:focus': { background: 'transparent' },
-        '&.Mui-focusVisible': { background: 'transparent' },
+        '&:hover': { color: '#c4a44a', backgroundColor: 'transparent !important' },
+        '&:focus, &:focus-visible': { backgroundColor: 'transparent !important' },
+        '&.Mui-focusVisible': { backgroundColor: 'transparent !important' },
+        '&.MuiTouchRipple-root': { display: 'none' },
         '&::after': {
             content: '""',
             position: 'absolute',
