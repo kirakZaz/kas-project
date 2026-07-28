@@ -130,16 +130,18 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, index }) => {
                     </Box>
                 </Box>
 
-                <Box>
-                    <Typography variant="overline" sx={styles.contributionsLabel}>
-                        Contributions
-                    </Typography>
-                    <Box sx={styles.chipContainer}>
-                        {member.contributions.map((c) => (
-                            <Chip key={c} label={c} size="small" sx={styles.chip} />
-                        ))}
+                {member.contributions.length > 0 && (
+                    <Box>
+                        <Typography variant="overline" sx={styles.contributionsLabel}>
+                            Contributions
+                        </Typography>
+                        <Box sx={styles.chipContainer}>
+                            {member.contributions.map((c) => (
+                                <Chip key={c} label={c} size="small" sx={styles.chip} />
+                            ))}
+                        </Box>
                     </Box>
-                </Box>
+                )}
             </CardContent>
         </MotionCard>
     )
