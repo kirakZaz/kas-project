@@ -44,6 +44,7 @@ const Assessment2Page = React.memo(function Assessment2Page() {
                 id="team"
                 title={A2_TEAM.title}
                 subtitle={A2_TEAM.subtitle}
+                members={A2_TEAM.members}
                 carousels={A2_TEAM.carousels}
             />
         </PageLayout>

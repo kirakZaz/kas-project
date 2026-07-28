@@ -15,7 +15,7 @@ import SlideGallery from '../../atoms/SlideGallery/SlideGallery'
 import { useImageViewer } from '../../../context/ImageViewerContext'
 import { styles } from './Team.styles'
 
-interface TeamMember {
+export interface TeamMember {
     name: string
     initials: string
     role: string

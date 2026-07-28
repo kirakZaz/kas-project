@@ -3,6 +3,7 @@ import type { Mechanic } from '../../components/organisms/Overview/Overview'
 import type { Sprint } from '../../components/organisms/Process/Process'
 import type { ConceptTab } from '../../components/organisms/Concept/Concept'
 import type { Video } from '../../components/organisms/Gallery/Gallery'
+import type { TeamMember } from '../../components/organisms/Team/Team'
 
 // Assessment 2 — Prototype 2. Reuses the SAME A1 showcase components
 // (Overview, Process timeline, Concept tabs, Team) with Assessment 2 content.
@@ -168,6 +169,40 @@ export const A2_GALLERY = {
 export const A2_TEAM = {
     title: 'Team & Collaboration',
     subtitle: 'Team KAS — Torrens University RGP204',
+    members: [
+        {
+            name: 'Kira Zakirov',
+            initials: 'KZ',
+            role: 'Lead Developer & Technical Artist',
+            contributions: [
+                'Crafting & inventory system (Unity C#)',
+                'ScriptableObject recipes & the Ancient Forge',
+                'Rune-based interaction & puzzle system',
+                'Inventory HUD & UI',
+                'Project management & Jira board',
+                'WebGL build',
+            ],
+        },
+        {
+            name: 'Sarah Assiri',
+            initials: 'SA',
+            role: '3D Artist, Animator & Level Designer',
+            contributions: [
+                '3D models for craftable components (elements, items, runes)',
+                'Asset texturing',
+            ],
+        },
+        {
+            name: 'Alexander Ramic',
+            initials: 'AR',
+            role: 'Game Designer & Sound Designer',
+            contributions: [
+                'Crafting & inventory system design document',
+                'Interaction & rune-puzzle design document',
+                'Recipe & component design',
+            ],
+        },
+    ] satisfies TeamMember[],
     carousels: [
         {
             title: 'Team Communication',
