@@ -3,6 +3,7 @@ import type { PageSection } from '../../../types/content.types'
 import KasHero from '../../organisms/KasHero/KasHero'
 import PageHero from '../../organisms/PageHero/PageHero'
 import Overview from '../../../components/organisms/Overview/Overview'
+import Team from '../../../components/organisms/Team/Team'
 import BriefHeader from '../../organisms/BriefHeader/BriefHeader'
 import ProseBlock from '../../organisms/ProseBlock/ProseBlock'
 import FeaturesBlock from '../../organisms/FeaturesBlock/FeaturesBlock'
@@ -32,6 +33,15 @@ const SectionRenderer = React.memo(function SectionRenderer({ section }: { secti
         case 'features': return <FeaturesBlock section={section} />
         case 'evidence': return <EvidenceBlock section={section} />
         case 'team': return <TeamBlock section={section} />
+        case 'rich-team': return (
+            <Team
+                id={section.id}
+                title={section.title}
+                subtitle={section.subtitle}
+                members={section.members}
+                carousels={[]}
+            />
+        )
         case 'assessment-cards': return <AssessmentCardsBlock section={section} />
         case 'cta': return <CtaBlock section={section} />
         case 'coming-soon': return <ComingSoonBlock section={section} />

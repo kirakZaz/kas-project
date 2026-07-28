@@ -1,6 +1,6 @@
 import type { PageContent } from '../types/content.types'
 import { SUBJECT } from './subject'
-import { TEAM } from './team'
+import { TEAM_CARDS } from './team'
 import { ROUTES } from './routes'
 
 // Home page. About the subject, what's expected, and about KAS (the game and the
@@ -52,11 +52,11 @@ export const HOME: PageContent = {
         },
 
         {
-            kind: 'team',
+            kind: 'rich-team',
             id: 'team',
             title: 'The Team',
             subtitle: 'A cross-disciplinary team of three across programming, art and design.',
-            members: TEAM,
+            members: TEAM_CARDS,
         },
 
         {

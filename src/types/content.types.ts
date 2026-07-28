@@ -139,6 +139,21 @@ export interface TeamSection {
     members: TeamMember[]
 }
 
+export interface RichTeamMember {
+    name: string
+    initials: string
+    role: string
+    contributions: string[]
+}
+
+export interface RichTeamSection {
+    kind: 'rich-team'
+    id?: string
+    title?: string
+    subtitle?: string
+    members: RichTeamMember[]
+}
+
 export interface AssessmentCardsSection {
     kind: 'assessment-cards'
     id?: string
@@ -172,6 +187,7 @@ export type PageSection =
     | FeaturesSection
     | EvidenceSection
     | TeamSection
+    | RichTeamSection
     | AssessmentCardsSection
     | CtaSection
     | ComingSoonSection
