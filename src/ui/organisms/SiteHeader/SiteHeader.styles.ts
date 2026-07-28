@@ -40,11 +40,16 @@ export const styles = {
         px: 2,
         py: 0.6,
         borderRadius: '3px',
-        transition: 'color 0.25s ease, background-color 0.25s ease',
-        // Hover + active: full-width gold fill with black text.
+        // Animated gold fill that grows from the left on hover/active.
+        backgroundColor: 'transparent !important',
+        backgroundImage: 'linear-gradient(#c4a44a, #c4a44a)',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'left center',
+        backgroundSize: '0% 100%',
+        transition: 'color 0.3s ease, background-size 0.35s ease',
         '&:hover, &.active, &.Mui-focusVisible': {
-            color: '#06060c !important',
-            backgroundColor: '#c4a44a !important',
+            color: '#06060c',
+            backgroundSize: '100% 100%',
         },
     } satisfies any,
 
