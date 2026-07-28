@@ -203,35 +203,67 @@ function ImageCarousel({ title, subtitle, images, altPrefix }: ImageCarouselProp
     )
 }
 
-const Team = React.memo(function Team() {
+interface CarouselData {
+    title: string
+    subtitle: string
+    images: string[]
+    altPrefix: string
+}
+
+const DEFAULT_CAROUSELS: CarouselData[] = [
+    {
+        title: "Sarah's Modeling Process",
+        subtitle: 'Character topology, rigging, and animation work in Blender',
+        images: SARAH_IMAGES,
+        altPrefix: 'Sarah work',
+    },
+    {
+        title: 'Team Iterations',
+        subtitle: 'Discord communication & collaboration throughout development',
+        images: CHAT_IMAGES,
+        altPrefix: 'Team chat',
+    },
+]
+
+interface TeamProps {
+    id?: string
+    title?: string
+    subtitle?: string
+    members?: TeamMember[]
+    carousels?: CarouselData[]
+}
+
+const Team = React.memo(function Team({
+    id = 'team',
+    title = 'Team & Collaboration',
+    subtitle = 'Team KAS — Torrens University RGP204',
+    members = MEMBERS,
+    carousels = DEFAULT_CAROUSELS,
+}: TeamProps) {
     return (
-        <Box id="team" sx={styles.section}>
+        <Box id={id} sx={styles.section}>
             <SectionTitle
-                title="Team & Collaboration"
-                subtitle="Team KAS — Torrens University RGP204"
+                title={title}
+                subtitle={subtitle}
             />
 
             <Grid container spacing={3} sx={styles.grid}>
-                {MEMBERS.map((member, index) => (
+                {members.map((member, index) => (
                     <Grid key={member.name} size={{ xs: 12, sm: 6, md: 4 }}>
                         <MemberCard member={member} index={index} />
                     </Grid>
                 ))}
             </Grid>
 
-            <ImageCarousel
-                title="Sarah's Modeling Process"
-                subtitle="Character topology, rigging, and animation work in Blender"
-                images={SARAH_IMAGES}
-                altPrefix="Sarah work"
-            />
-
-            <ImageCarousel
-                title="Team Iterations"
-                subtitle="Discord communication & collaboration throughout development"
-                images={CHAT_IMAGES}
-                altPrefix="Team chat"
-            />
+            {carousels.map((carousel) => (
+                <ImageCarousel
+                    key={carousel.title}
+                    title={carousel.title}
+                    subtitle={carousel.subtitle}
+                    images={carousel.images}
+                    altPrefix={carousel.altPrefix}
+                />
+            ))}
         </Box>
     )
 })

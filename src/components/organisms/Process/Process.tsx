@@ -7,8 +7,9 @@ import { styles } from './Process.styles'
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
-interface Sprint {
+export interface Sprint {
     name: string
+    subtitle: string
     dates: string
     jira: string
     images: string[]
@@ -18,6 +19,7 @@ interface Sprint {
 const SPRINTS: Sprint[] = [
     {
         name: 'Sprint 1',
+        subtitle: 'Init + Double Jump',
         dates: '1 – 7 Jun',
         jira: '/assets/sprints/sprint1-backlog.png',
         images: [
@@ -30,6 +32,7 @@ const SPRINTS: Sprint[] = [
     },
     {
         name: 'Sprint 2',
+        subtitle: 'I-Frames',
         dates: '8 – 14 Jun',
         jira: '/assets/sprints/sprint2-iframe.png',
         images: [
@@ -42,6 +45,7 @@ const SPRINTS: Sprint[] = [
     },
     {
         name: 'Sprint 3',
+        subtitle: 'Glide',
         dates: '15 – 21 Jun',
         jira: '/assets/sprints/sprint3-glide.png',
         images: [
@@ -54,6 +58,7 @@ const SPRINTS: Sprint[] = [
     },
     {
         name: 'Sprint 4',
+        subtitle: 'Assessment',
         dates: '22 – 28 Jun',
         jira: '/assets/sprints/sprint4-assessment.png',
         images: [
@@ -96,11 +101,10 @@ const SprintImage: React.FC<SprintImageProps> = ({ src, alt, wide }) => {
 
 interface SprintCardProps {
     sprint: Sprint
-    index: number
     isRight: boolean
 }
 
-const SprintCard: React.FC<SprintCardProps> = ({ sprint, index, isRight }) => {
+const SprintCard: React.FC<SprintCardProps> = ({ sprint, isRight }) => {
     const { ref, inView } = useInView({ threshold: 0.15, triggerOnce: true })
 
     const initial = { opacity: 0, x: isRight ? 60 : -60, y: 20 }
@@ -121,11 +125,7 @@ const SprintCard: React.FC<SprintCardProps> = ({ sprint, index, isRight }) => {
                         {sprint.name}
                         {' — '}
                         <Box component="span" sx={styles.sprintCardTitleSubSpan}>
-                            {/* Sprint subtitle derived from jira filename */}
-                            {index === 0 && 'Init + Double Jump'}
-                            {index === 1 && 'I-Frames'}
-                            {index === 2 && 'Glide'}
-                            {index === 3 && 'Assessment'}
+                            {sprint.subtitle}
                         </Box>
                     </Typography>
                     <Typography sx={styles.sprintCardDates}>
@@ -258,7 +258,7 @@ const SprintRow: React.FC<SprintRowProps> = ({ sprint, index, isMobile }) => {
                     </Box>
                     {/* Card */}
                     <Box sx={styles.sprintRowMobileCardCol}>
-                        <SprintCard sprint={sprint} index={index} isRight={false} />
+                        <SprintCard sprint={sprint} isRight={false} />
                     </Box>
                 </Box>
             </Box>
@@ -269,7 +269,7 @@ const SprintRow: React.FC<SprintRowProps> = ({ sprint, index, isMobile }) => {
         <Box ref={dotRef} sx={styles.sprintRowDesktopGrid}>
             {/* Left slot */}
             <Box sx={styles.sprintRowLeftSlot}>
-                {!isRight && <SprintCard sprint={sprint} index={index} isRight={false} />}
+                {!isRight && <SprintCard sprint={sprint} isRight={false} />}
             </Box>
 
             {/* Center dot */}
@@ -279,7 +279,7 @@ const SprintRow: React.FC<SprintRowProps> = ({ sprint, index, isMobile }) => {
 
             {/* Right slot */}
             <Box sx={styles.sprintRowRightSlot}>
-                {isRight && <SprintCard sprint={sprint} index={index} isRight={true} />}
+                {isRight && <SprintCard sprint={sprint} isRight={true} />}
             </Box>
         </Box>
     )
@@ -287,14 +287,26 @@ const SprintRow: React.FC<SprintRowProps> = ({ sprint, index, isMobile }) => {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-const Process: React.FC = () => {
+interface ProcessProps {
+    id?: string
+    title?: string
+    subtitle?: string
+    sprints?: Sprint[]
+}
+
+const Process: React.FC<ProcessProps> = ({
+    id = 'timeline',
+    title = 'Development Timeline',
+    subtitle = '4 Sprints · Iterative Prototyping · Agile Workflow',
+    sprints = SPRINTS,
+}) => {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
     const timelineRef = useRef<HTMLDivElement>(null)
 
     return (
-        <Box id="timeline" sx={styles.processSection}>
+        <Box id={id} sx={styles.processSection}>
             {/* Section heading */}
             <motion.div
                 initial={{ opacity: 0, y: -24 }}
@@ -304,11 +316,11 @@ const Process: React.FC = () => {
             >
                 <Box sx={styles.processHeadingBox}>
                     <Typography component="h2" sx={styles.processHeadingTitle}>
-                        Development Timeline
+                        {title}
                     </Typography>
                     <Box sx={styles.processHeadingDivider} />
                     <Typography sx={styles.processHeadingSubtitle}>
-                        4 Sprints · Iterative Prototyping · Agile Workflow
+                        {subtitle}
                     </Typography>
                 </Box>
             </motion.div>
@@ -321,7 +333,7 @@ const Process: React.FC = () => {
                 {/* Desktop animated line */}
                 {!isMobile && <AnimatedTimelineLine />}
 
-                {SPRINTS.map((sprint, index) => (
+                {sprints.map((sprint, index) => (
                     <SprintRow
                         key={sprint.name}
                         sprint={sprint}

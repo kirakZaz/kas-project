@@ -9,12 +9,12 @@ import { styles } from './Concept.styles'
 
 // ─── Tab data ────────────────────────────────────────────────────────────────
 
-interface ConceptItem {
+export interface ConceptItem {
     title: string
     image: string
 }
 
-interface ConceptTab {
+export interface ConceptTab {
     label: string
     items: ConceptItem[]
 }
@@ -258,7 +258,19 @@ const TiltCard = React.memo(function TiltCard({ item, onClick }: TiltCardProps) 
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-const Concept = React.memo(function Concept() {
+interface ConceptProps {
+    id?: string
+    title?: string
+    subtitle?: string
+    tabs?: ConceptTab[]
+}
+
+const Concept = React.memo(function Concept({
+    id = 'concept',
+    title = 'Concept & Design',
+    subtitle = 'Character design, environment concepts, mechanics documentation, and moodboards',
+    tabs = TABS,
+}: ConceptProps) {
     const [activeTab, setActiveTab] = React.useState(0)
     const { openImage } = useImageViewer()
 
@@ -272,11 +284,11 @@ const Concept = React.memo(function Concept() {
         openImage(image, alt)
     }, [openImage])
 
-    const currentItems = TABS[activeTab].items
+    const currentItems = tabs[activeTab].items
 
     return (
         <Box
-            id="concept"
+            id={id}
             ref={sectionRef}
             component={motion.div}
             initial={{ opacity: 0, y: 40 }}
@@ -285,8 +297,8 @@ const Concept = React.memo(function Concept() {
             sx={styles.section}
         >
             <SectionTitle
-                title="Concept & Design"
-                subtitle="Character design, environment concepts, mechanics documentation, and moodboards"
+                title={title}
+                subtitle={subtitle}
             />
 
             {/* Tabs bar */}
@@ -299,7 +311,7 @@ const Concept = React.memo(function Concept() {
                     allowScrollButtonsMobile
                     sx={styles.tabs}
                 >
-                    {TABS.map((tab, index) => (
+                    {tabs.map((tab, index) => (
                         <Tab
                             key={tab.label}
                             label={tab.label}

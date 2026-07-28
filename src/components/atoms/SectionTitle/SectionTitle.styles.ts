@@ -70,5 +70,6 @@ export const styles = {
         maxWidth: '560px',
         lineHeight: 1.7,
         mt: 0.5,
+        textWrap: 'balance',
     } satisfies any,
 }

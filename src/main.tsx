@@ -2,13 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider, CssBaseline } from '@mui/material'
 import theme from './theme/theme'
-import App from './App'
+import AppRouter from './AppRouter'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <App />
+            <AppRouter />
         </ThemeProvider>
     </React.StrictMode>
 )

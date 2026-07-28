@@ -7,7 +7,14 @@ import { styles, getMechCardSx, getMechTitleSx } from './Overview.styles'
 
 const MotionCard = motion.create(Card)
 
-const MECHANICS = [
+export interface Mechanic {
+    title: string
+    description: string
+    icon?: string
+    color: string
+}
+
+const MECHANICS: Mechanic[] = [
     {
         title: 'Double Jump',
         description: 'Leap through gothic spires with a powerful double jump, designed with precise physics for tight platforming.',
@@ -28,24 +35,36 @@ const MECHANICS = [
     },
 ]
 
-const Overview = React.memo(function Overview() {
+interface OverviewProps {
+    id?: string
+    title?: string
+    subtitle?: string
+    description?: string
+    items?: Mechanic[]
+}
+
+const Overview = React.memo(function Overview({
+    id = 'about',
+    title = 'About the Game',
+    subtitle = 'A gothic 3D platformer built with Unity, featuring hand-crafted assets and unique mechanics',
+    description = 'KAS is a rapid prototype developed over 4 weeks in a team of 3. The game follows a bird-like creature named Kas through a dark, gothic world. Every asset — from character models to textures and sound effects — was created from scratch.',
+    items = MECHANICS,
+}: OverviewProps) {
     const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
 
     return (
-        <Box id="about" ref={ref} sx={styles.section}>
+        <Box id={id} ref={ref} sx={styles.section}>
             <SectionTitle
-                title="About the Game"
-                subtitle="A gothic 3D platformer built with Unity, featuring hand-crafted assets and unique mechanics"
+                title={title}
+                subtitle={subtitle}
             />
 
             <Typography variant="body1" sx={styles.description}>
-                KAS is a rapid prototype developed over 4 weeks in a team of 3. The game follows
-                a bird-like creature named Kas through a dark, gothic world. Every asset — from
-                character models to textures and sound effects — was created from scratch.
+                {description}
             </Typography>
 
             <Grid container spacing={4}>
-                {MECHANICS.map((mech, i) => (
+                {items.map((mech, i) => (
                     <Grid size={{ xs: 12, md: 4 }} key={mech.title}>
                         <MotionCard
                             initial={{ opacity: 0, y: 60 }}
@@ -55,13 +74,15 @@ const Overview = React.memo(function Overview() {
                             sx={getMechCardSx(mech.color)}
                         >
                             <CardContent sx={styles.cardContent}>
-                                <Box
-                                    component="img"
-                                    className="mech-icon"
-                                    src={mech.icon}
-                                    alt={mech.title}
-                                    sx={styles.mechIcon}
-                                />
+                                {mech.icon && (
+                                    <Box
+                                        component="img"
+                                        className="mech-icon"
+                                        src={mech.icon}
+                                        alt={mech.title}
+                                        sx={styles.mechIcon}
+                                    />
+                                )}
                                 <Typography variant="h4" sx={getMechTitleSx(mech.color)}>
                                     {mech.title}
                                 </Typography>

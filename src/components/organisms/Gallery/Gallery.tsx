@@ -7,7 +7,12 @@ import SlideGallery from '../../atoms/SlideGallery/SlideGallery'
 import { useImageViewer } from '../../../context/ImageViewerContext'
 import { styles } from './Gallery.styles'
 
-const VIDEOS = [
+export interface Video {
+    title: string
+    src: string
+}
+
+const VIDEOS: Video[] = [
     { title: 'Latest Build',       src: '/assets/video/gameplay-11.mp4' },
     { title: 'Early Prototype',    src: '/assets/video/REC-20260617183338.mp4' },
     { title: 'Movement Test',      src: '/assets/video/REC-20260617192624.mp4' },
@@ -89,12 +94,24 @@ const VideoCard = React.memo(function VideoCard({ title, src }: VideoCardProps) 
 
 const MotionBox = motion.create(Box)
 
-const Gallery = React.memo(function Gallery() {
+interface GalleryProps {
+    id?: string
+    title?: string
+    subtitle?: string
+    videos?: Video[]
+}
+
+const Gallery = React.memo(function Gallery({
+    id = 'gallery',
+    title = 'Gallery',
+    subtitle = 'Gameplay videos from development',
+    videos = VIDEOS,
+}: GalleryProps) {
     const { ref: sectionRef, inView } = useInView({ threshold: 0.1, triggerOnce: true })
 
     return (
         <MotionBox
-            id="gallery"
+            id={id}
             ref={sectionRef}
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -102,12 +119,12 @@ const Gallery = React.memo(function Gallery() {
             sx={styles.section}
         >
             <SectionTitle
-                title="Gallery"
-                subtitle="Gameplay videos from development"
+                title={title}
+                subtitle={subtitle}
             />
 
             <SlideGallery itemWidth={{ xs: 300, sm: 380, md: 440 }}>
-                {VIDEOS.map((video) => (
+                {videos.map((video) => (
                     <VideoCard key={video.title} title={video.title} src={video.src} />
                 ))}
             </SlideGallery>

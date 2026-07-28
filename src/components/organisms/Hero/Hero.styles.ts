@@ -9,6 +9,8 @@ export const styles = {
         overflow: 'hidden',
         textAlign: 'center',
         px: 3,
+        // Clear the fixed header so the character isn't hidden behind it.
+        pt: { xs: '84px', md: '96px' },
     },
 
     radialBackground: {
