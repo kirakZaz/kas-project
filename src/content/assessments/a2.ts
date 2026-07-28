@@ -198,7 +198,10 @@ export const A2_TEAM = {
             name: 'Sarah Assiri',
             initials: 'SA',
             role: '3D Artist, Animator & Level Designer',
-            contributions: [],
+            contributions: [
+                'Level design & layout',
+                'Environment building',
+            ],
         },
     ] satisfies TeamMember[],
     carousels: [
