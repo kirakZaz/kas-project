@@ -1,0 +1,2 @@
+public/game/build/Build/build.data filter=lfs diff=lfs merge=lfs -text
+public/game/build/Build/build.wasm filter=lfs diff=lfs merge=lfs -text
