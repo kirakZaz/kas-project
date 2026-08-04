@@ -27,7 +27,7 @@ export const A2_HERO: HeroSection = {
         'Building on KAS with two new systems — a crafting & inventory system and a ' +
         'rune-based interaction & puzzle system.',
     meta: META_A2,
-    status: 'in-progress',
+    status: 'complete',
 }
 
 export const A2_BRIEF: BriefSection = {
@@ -98,9 +98,9 @@ export const A2_PROCESS = {
             dates: '21 Jul – 5 Aug',
             jira: '/assets/a2/jira/jira-2.png',
             images: [
+                '/assets/a2/build/gameplay-puzzle.png',
                 '/assets/a2/build/build-11.png',
-                '/assets/a2/build/build-09.png',
-                '/assets/a2/build/build-01.png',
+                '/assets/a2/build/puzzle-wiring.png',
             ],
             description:
                 'Used crafted runes to drive interactions — activating generators, doors and gated ' +
@@ -135,6 +135,26 @@ export const A2_CONCEPT = {
             ],
         },
         {
+            label: 'Level & Environment',
+            items: [
+                { title: 'Level entrance — "Welcome to KAS" sign', image: '/assets/a2/environment/env-01.png' },
+                { title: 'Water Mountains vista', image: '/assets/a2/environment/env-02.png' },
+                { title: 'Oasis pool & stone ring', image: '/assets/a2/environment/env-03.png' },
+                { title: 'Level layout — terrain & water', image: '/assets/a2/environment/env-04.png' },
+                { title: 'Wooden platforms & bridges', image: '/assets/a2/environment/env-05.png' },
+                { title: 'Forest path', image: '/assets/a2/environment/env-06.png' },
+                { title: 'Narrative signpost & gate', image: '/assets/a2/environment/env-07.png' },
+                { title: 'Rune clearing', image: '/assets/a2/environment/env-08.png' },
+                { title: 'Fire hazard placement', image: '/assets/a2/environment/env-09.png' },
+                { title: 'Chapel on the hill', image: '/assets/a2/environment/env-10.png' },
+                { title: 'Damage-zone hazard scripting', image: '/assets/a2/environment/env-11.png' },
+                { title: 'Chapel model (Blender)', image: '/assets/a2/environment/env-12.png' },
+                { title: 'Chapel imported to Unity', image: '/assets/a2/environment/env-13.png' },
+                { title: 'Chapel placed in level', image: '/assets/a2/environment/env-14.png' },
+                { title: 'Chapel interior', image: '/assets/a2/environment/env-15.png' },
+            ],
+        },
+        {
             label: 'In Engine',
             items: [
                 { title: 'Ancient Forge crafting menu', image: '/assets/a2/build/build-05.png' },
@@ -142,6 +162,9 @@ export const A2_CONCEPT = {
                 { title: 'Inventory panel', image: '/assets/a2/build/build-07.png' },
                 { title: 'Inventory & recipe reference', image: '/assets/a2/build/build-09.png' },
                 { title: 'Crafted runes in the world', image: '/assets/a2/build/build-11.png' },
+                { title: 'Generator puzzle — light the runes in order', image: '/assets/a2/build/gameplay-puzzle.png' },
+                { title: 'Generator interaction component (editor)', image: '/assets/a2/build/generator-inspector.png' },
+                { title: 'Puzzle solution wiring → Door.Open', image: '/assets/a2/build/puzzle-wiring.png' },
                 { title: 'Component spawner (editor)', image: '/assets/a2/build/build-01.png' },
                 { title: 'Gameplay feedback code', image: '/assets/a2/build/build-12.png' },
             ],
@@ -200,7 +223,10 @@ export const A2_TEAM = {
             role: '3D Artist, Animator & Level Designer',
             contributions: [
                 'Level design & layout',
-                'Environment building',
+                'Environment building & terrain',
+                'Chapel model (Blender) & in-level placement',
+                'Level signage & narrative props',
+                'Environmental hazards (fire & damage zones)',
             ],
         },
     ] satisfies TeamMember[],
@@ -210,6 +236,12 @@ export const A2_TEAM = {
             subtitle: 'Coordination throughout the Assessment 2 sprint',
             images: Array.from({ length: 11 }, (_, i) => `/assets/a2/team/chat-${String(i + 1).padStart(2, '0')}.png`),
             altPrefix: 'Team chat',
+        },
+        {
+            title: 'Design Discussions',
+            subtitle: 'Weeks 5–9 — mechanics, crafting & puzzle design threads',
+            images: Array.from({ length: 21 }, (_, i) => `/assets/a2/team/discussions/disc-${String(i + 1).padStart(2, '0')}.png`),
+            altPrefix: 'Design discussion',
         },
     ],
 }
