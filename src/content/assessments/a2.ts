@@ -169,13 +169,6 @@ export const A2_CONCEPT = {
                 { title: 'Gameplay feedback code', image: '/assets/a2/build/build-12.png' },
             ],
         },
-        {
-            label: 'Project Tracking',
-            items: [
-                { title: 'Jira board — backlog', image: '/assets/a2/jira/jira-1.png' },
-                { title: 'Jira board — statuses', image: '/assets/a2/jira/jira-2.png' },
-            ],
-        },
     ] satisfies ConceptTab[],
 }
 
@@ -185,6 +178,7 @@ export const A2_GALLERY = {
     subtitle: 'Gameplay from the Assessment 2 prototype',
     videos: [
         { title: 'Crafting & Runes — Gameplay', src: '/assets/a2/video/gameplay-1.mp4' },
+        { title: 'Rune Puzzle & Interaction — Gameplay', src: '/assets/a2/video/gameplay-2.mp4' },
     ] satisfies Video[],
 }
 
