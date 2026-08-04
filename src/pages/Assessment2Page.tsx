@@ -2,12 +2,13 @@ import React from 'react'
 import PageLayout from '../ui/templates/PageLayout/PageLayout'
 import PageHero from '../ui/organisms/PageHero/PageHero'
 import BriefHeader from '../ui/organisms/BriefHeader/BriefHeader'
-import { A2_HERO, A2_BRIEF, A2_OVERVIEW, A2_PROCESS, A2_CONCEPT, A2_GALLERY, A2_TEAM } from '../content/assessments/a2'
+import { A2_HERO, A2_BRIEF, A2_OVERVIEW, A2_PROCESS, A2_CONCEPT, A2_GALLERY, A2_SPOTLIGHTS, A2_TEAM } from '../content/assessments/a2'
 // Same reusable A1 showcase components, rendered with Assessment 2 data.
 import Overview from '../components/organisms/Overview/Overview'
 import Process from '../components/organisms/Process/Process'
 import Concept from '../components/organisms/Concept/Concept'
 import Gallery from '../components/organisms/Gallery/Gallery'
+import MemberSpotlights from '../components/organisms/MemberSpotlights/MemberSpotlights'
 import Team from '../components/organisms/Team/Team'
 
 const Assessment2Page = React.memo(function Assessment2Page() {
@@ -40,11 +41,17 @@ const Assessment2Page = React.memo(function Assessment2Page() {
                 subtitle={A2_GALLERY.subtitle}
                 videos={A2_GALLERY.videos}
             />
+            <MemberSpotlights
+                id="contributions"
+                title={A2_SPOTLIGHTS.title}
+                subtitle={A2_SPOTLIGHTS.subtitle}
+                members={A2_SPOTLIGHTS.members}
+            />
             <Team
                 id="team"
-                title={A2_TEAM.title}
-                subtitle={A2_TEAM.subtitle}
-                members={A2_TEAM.members}
+                title="Team & Collaboration"
+                subtitle="Coordination and design threads across the Assessment 2 sprint"
+                members={[]}
                 carousels={A2_TEAM.carousels}
             />
         </PageLayout>

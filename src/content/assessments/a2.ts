@@ -4,6 +4,7 @@ import type { Sprint } from '../../components/organisms/Process/Process'
 import type { ConceptTab } from '../../components/organisms/Concept/Concept'
 import type { Video } from '../../components/organisms/Gallery/Gallery'
 import type { TeamMember } from '../../components/organisms/Team/Team'
+import type { SpotlightMember } from '../../components/organisms/MemberSpotlights/MemberSpotlights'
 
 // Assessment 2 — Prototype 2. Reuses the SAME A1 showcase components
 // (Overview, Process timeline, Concept tabs, Team) with Assessment 2 content.
@@ -238,4 +239,121 @@ export const A2_TEAM = {
             altPrefix: 'Design discussion',
         },
     ],
+}
+
+// --- Individual contributions (per-member spotlights) ---
+// Deliberately uneven: each member's block has a different layout and a
+// different amount of media, reflecting what they actually owned this sprint.
+export const A2_SPOTLIGHTS = {
+    title: 'Individual Contributions',
+    subtitle: 'Three people, three disciplines — how Prototype 2 came together',
+    members: [
+        {
+            name: 'Alexander Ramic',
+            role: 'Game Designer · 3D Modeller · Sound Designer',
+            accent: '#c4a44a',
+            // Alex's own words (from his written reflection).
+            lead:
+                '"My part in the project was designing our game mechanics and drawing up the relevant ' +
+                'documents, controls and crafting recipes — which we’d then discuss and tweak as a group ' +
+                'so they could be built in the time we had and become our combined vision. I recorded the ' +
+                'sounds, and textured and modelled all of my own models: the Nature Door, Clock Tower, the ' +
+                'hint grave-altars, the crafting items (Runes, Elements, Materials), the puzzle generator, ' +
+                'Symbol Wall and unused puzzle altar — and helped place assets in the scene and configure ' +
+                'the puzzle solutions." — Alexander',
+            focus: ['Design documents', 'Crafting recipes', '3D modelling & texturing', 'Sound design', 'Puzzle configuration'],
+            media: [
+                { src: '/assets/a2/members/alex/doc-crafting-draft.png', caption: 'Crafting — initial concept draft (UI & game screen)', fit: 'contain' },
+                { src: '/assets/a2/members/alex/element-fire.png', caption: 'Fire — element', fit: 'contain' },
+                { src: '/assets/a2/members/alex/element-water.png', caption: 'Water — element', fit: 'contain' },
+                { src: '/assets/a2/members/alex/element-electricity.png', caption: 'Electricity — element', fit: 'contain' },
+                { src: '/assets/a2/members/alex/element-wood.png', caption: 'Wood — material', fit: 'contain' },
+                { src: '/assets/a2/members/alex/element-stone.png', caption: 'Stone — material', fit: 'contain' },
+                { src: '/assets/a2/members/alex/element-metal.png', caption: 'Metal — material', fit: 'contain' },
+                { src: '/assets/a2/members/alex/coin.png', caption: 'Coin — crafted item', fit: 'contain' },
+                { src: '/assets/a2/members/alex/rusted-coin.png', caption: 'Rustworn Coin', fit: 'contain' },
+                { src: '/assets/a2/members/alex/runestone.png', caption: 'Runestone', fit: 'contain' },
+                { src: '/assets/a2/members/alex/rune-oasis.png', caption: 'Oasis Nature Rune', fit: 'contain' },
+                { src: '/assets/a2/members/alex/rune-steel.png', caption: 'Steel Thunder Rune', fit: 'contain' },
+                { src: '/assets/a2/members/alex/doc-addendum-forge.jpg', caption: 'Addendum — Ancient Forge crafting UI & controls', fit: 'contain' },
+                { src: '/assets/a2/members/alex/doc-addendum-info.jpg', caption: 'Addendum — recipes, generator dial & puzzle-solution mapping', fit: 'contain' },
+                { src: '/assets/a2/members/alex/doc-crafting-1.jpg', caption: 'Crafting system design — part 1', fit: 'contain' },
+                { src: '/assets/a2/members/alex/doc-crafting-2.jpg', caption: 'Crafting system design — part 2', fit: 'contain' },
+                { src: '/assets/a2/members/alex/doc-crafting-3.jpg', caption: 'Crafting system design — part 3', fit: 'contain' },
+                { src: '/assets/a2/members/alex/doc-crafting-4.jpg', caption: 'Crafting & inventory design — part 4', fit: 'contain' },
+                { src: '/assets/a2/members/alex/doc-inventory-2.jpg', caption: 'Inventory design — part 2', fit: 'contain' },
+                { src: '/assets/a2/members/alex/doc-interaction-1.jpg', caption: 'Interaction & rune-puzzle design — part 1', fit: 'contain' },
+                { src: '/assets/a2/members/alex/doc-interaction-2.jpg', caption: 'Interaction & rune-puzzle design — part 2', fit: 'contain' },
+                { src: '/assets/a2/members/alex/doc-interaction-3.jpg', caption: 'Interaction & rune-puzzle design — part 3', fit: 'contain' },
+                { src: '/assets/a2/members/alex/doc-interaction-4.jpg', caption: 'Interaction & rune-puzzle design — part 4', fit: 'contain' },
+                { src: '/assets/a2/members/alex/doc-interaction-5.jpg', caption: 'Interaction & rune-puzzle design — part 5', fit: 'contain' },
+                { src: '/assets/a2/members/alex/plan-clocktower.jpg', caption: 'Level plan — clock tower, generator & lamppost parkour' },
+                { src: '/assets/a2/members/alex/plan-greybox.jpg', caption: 'Greybox — Steel Puzzle Door & grave-altar hint assets (Blender)' },
+                { src: '/assets/a2/members/alex/model-chapel-greybox.jpg', caption: 'Chapel greybox & pew layout (Blender)' },
+                { src: '/assets/a2/members/alex/nature-archway-ingame.jpg', caption: 'Nature Door & Archway model in-engine' },
+                { src: '/assets/a2/members/alex/tex-generator.png', caption: 'Generator — hand-painted texture atlas', fit: 'contain' },
+            ],
+        },
+        {
+            name: 'Sarah Assiri',
+            role: '3D Artist · Animator · Level Designer',
+            accent: '#00e5ff',
+            lead:
+                'Sarah built the world the systems live in — sculpting the terrain, laying out the oasis ' +
+                'and its platforming route, modelling the chapel, raising the clock tower and stone maze, ' +
+                'placing the narrative signage, tuning the retro materials and scripting the environmental ' +
+                'hazards that make the level a place to survive, not just cross.',
+            focus: ['Level layout', 'Terrain & environment', 'Chapel & tower (Blender)', 'Materials & lighting', 'Environmental hazards'],
+            media: [
+                { src: '/assets/a2/members/sarah/env-water-mountains.jpg', caption: 'The "Water Mountains" vista — oasis, rocky islands & signage' },
+                { src: '/assets/a2/members/sarah/env-entrance.jpg', caption: 'Level entrance — "Welcome to Kas" sign & lanterns' },
+                { src: '/assets/a2/members/sarah/env-layout.jpg', caption: 'Top-down layout — oasis, platforms & enemy placement' },
+                { src: '/assets/a2/members/sarah/env-maze.jpg', caption: 'Top-down — stone-walled maze layout' },
+                { src: '/assets/a2/members/sarah/env-platforms.jpg', caption: 'Wooden bridges & the platforming route over the oasis' },
+                { src: '/assets/a2/members/sarah/env-oasis.jpg', caption: 'Oasis pool ringed by stone walls' },
+                { src: '/assets/a2/members/sarah/env-forest-path.jpg', caption: 'Forest path through the spiked woodland' },
+                { src: '/assets/a2/members/sarah/env-signpost.jpg', caption: 'Narrative signpost & the gated path' },
+                { src: '/assets/a2/members/sarah/env-clock-tower.jpg', caption: 'Clock tower & lantern-lit ramparts' },
+                { src: '/assets/a2/members/sarah/env-chapel.jpg', caption: 'Chapel on the hill' },
+                { src: '/assets/a2/members/sarah/env-chapel-interior.jpg', caption: 'Chapel interior — pews & altar' },
+                { src: '/assets/a2/members/sarah/env-rune-altar.jpg', caption: 'Rune-puzzle altar by the wall' },
+                { src: '/assets/a2/members/sarah/env-fire-hazard.jpg', caption: 'Fire hazards placed along the hillside' },
+                { src: '/assets/a2/members/sarah/env-cliff-fire.jpg', caption: 'Fire hazards on the cliffside tower' },
+                { src: '/assets/a2/members/sarah/env-damage-zone.jpg', caption: 'Damage-zone hazard scripting (Unity)' },
+                { src: '/assets/a2/members/sarah/env-material-setup.jpg', caption: 'Material setup — Retro Lit shader (lamppost)' },
+                { src: '/assets/a2/members/sarah/env-material-tuning.jpg', caption: 'Material tuning — lighting & the retro material library' },
+                { src: '/assets/a2/members/sarah/env-anim-materials.jpg', caption: 'Animation & materials workflow (Unity)' },
+                { src: '/assets/a2/members/sarah/env-editor.jpg', caption: 'Level assembly in the Unity editor' },
+            ],
+        },
+        {
+            name: 'Kira Zakirov',
+            role: 'Lead Developer · Technical Artist',
+            accent: '#c4a44a',
+            lead:
+                'Kira programmed both systems end-to-end in Unity C# — the ScriptableObject crafting and ' +
+                'inventory, the rune-driven interaction framework, and the generator puzzles that validate ' +
+                'a crafted sequence to open the way forward. She wired the prefabs and solutions in the ' +
+                'scene, built the inventory HUD, and packaged and shipped the WebGL build.',
+            focus: ['Crafting & inventory (C#)', 'Rune interaction framework', 'Generator puzzle logic', 'Inventory HUD', 'WebGL build'],
+            video: {
+                src: '/assets/a2/video/gameplay-2.mp4',
+                title: 'Rune puzzle & interaction — gameplay',
+            },
+            media: [
+                { src: '/assets/a2/members/kira/puzzle-ingame.jpg', caption: 'Generator puzzle in-game — light the runes in order, with the live inventory HUD' },
+                { src: '/assets/a2/members/kira/code-crafting-system.png', caption: 'CraftingSystem.cs — recipe matching & inventory logic (C#)' },
+                { src: '/assets/a2/members/kira/code-crafting-recipe.png', caption: 'CraftingRecipeSO.cs — recipe ScriptableObject' },
+                { src: '/assets/a2/members/kira/code-craftable-item.png', caption: 'CraftableItemSO.cs — craftable-item ScriptableObject' },
+                { src: '/assets/a2/members/kira/code-shader.png', caption: 'URP Lit shader — material pipeline reference' },
+                { src: '/assets/a2/members/kira/generator-inspector.png', caption: 'Generator component — required rune, solutions & events' },
+                { src: '/assets/a2/members/kira/solution-wiring.png', caption: 'Solution sequence wired to Door.Open on solve' },
+                { src: '/assets/a2/members/kira/solution-order.png', caption: 'Puzzle solution — element order array' },
+                { src: '/assets/a2/members/kira/generator-placement.jpg', caption: 'Generator & dial placement in the scene' },
+                { src: '/assets/a2/members/kira/prefab-materials.jpg', caption: 'Pickup & prop prefabs wired into the scene' },
+                { src: '/assets/a2/members/kira/model-import.png', caption: 'Model import — material remapping (Unity)' },
+                { src: '/assets/a2/members/kira/project-props.png', caption: 'Project structure — models, prefabs & systems' },
+            ],
+        },
+    ] satisfies SpotlightMember[],
 }
