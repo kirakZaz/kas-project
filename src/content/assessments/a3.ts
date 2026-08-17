@@ -93,6 +93,15 @@ export const A3_PROCESS = {
             items: [
                 { title: 'Kas exploring the gothic level', image: '/assets/a3/gallery/gameplay-kas.png' },
                 { title: 'Exploring with the inventory & crafting HUD', image: '/assets/a3/gallery/gameplay-swamp.png' },
+                { title: 'KAS — in-game', image: '/assets/a3/gallery/ingame/gameplay-1.png' },
+                { title: 'KAS — in-game', image: '/assets/a3/gallery/ingame/gameplay-2.png' },
+                { title: 'KAS — in-game', image: '/assets/a3/gallery/ingame/gameplay-3.png' },
+                { title: 'KAS — in-game', image: '/assets/a3/gallery/ingame/gameplay-4.png' },
+                { title: 'KAS — in-game', image: '/assets/a3/gallery/ingame/gameplay-5.png' },
+                { title: 'The Ancient Forge — crafting', image: '/assets/a3/gallery/ingame/gameplay-6.png' },
+                { title: 'KAS — in-game', image: '/assets/a3/gallery/ingame/gameplay-7.png' },
+                { title: 'KAS — in-game', image: '/assets/a3/gallery/ingame/gameplay-8.png' },
+                { title: 'KAS — in-game', image: '/assets/a3/gallery/ingame/gameplay-9.png' },
             ],
         },
         {
@@ -105,6 +114,8 @@ export const A3_PROCESS = {
                 { title: 'Materials matched to the correct submesh order', image: '/assets/a3/process/turret-materials.png' },
                 { title: 'Applying the base & wheel PBR textures', image: '/assets/a3/process/turret-textures.png' },
                 { title: 'Configurable sword-volley on the blade trap', image: '/assets/a3/process/sword-volley-setup.png' },
+                { title: 'Textured turret in the level — stained glass', image: '/assets/a3/process/turret-textured-1.png' },
+                { title: 'Textured turret — finished look', image: '/assets/a3/process/turret-textured-2.png' },
             ],
         },
         {
@@ -185,6 +196,7 @@ export const A3_GALLERY = {
     title: 'Gallery',
     subtitle: 'The vertical slice in motion',
     videos: [
+        { title: 'Gameplay walkthrough', src: '/assets/a3/video/gameplay-walkthrough.mp4' },
         { title: 'Blade-trap turret — sword volley', src: '/assets/a3/video/swords.mp4' },
     ] satisfies Video[],
 }
