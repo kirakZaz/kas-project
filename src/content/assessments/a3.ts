@@ -125,6 +125,22 @@ export const A3_PROCESS = {
                 { title: 'Fixing shader stripping for the WebGL build', image: '/assets/a3/process/shader-include.png' },
             ],
         },
+        {
+            label: 'Level Design',
+            items: [
+                { title: 'Level design & placement', image: '/assets/a3/process/level/level-1.png' },
+                { title: 'Placing resources in the maze', image: '/assets/a3/process/level/level-2.png' },
+                { title: 'Blade traps by the oasis', image: '/assets/a3/process/level/level-3.png' },
+                { title: 'Bridges over the water', image: '/assets/a3/process/level/level-4.png' },
+                { title: 'Maze & rune hints', image: '/assets/a3/process/level/level-5.png' },
+                { title: 'Resource placement for progression', image: '/assets/a3/process/level/level-6.png' },
+                { title: 'Trap placement in the level', image: '/assets/a3/process/level/level-7.png' },
+                { title: 'Level layout', image: '/assets/a3/process/level/level-8.png' },
+                { title: 'Pickups in the gated area', image: '/assets/a3/process/level/level-9.png' },
+                { title: 'Lampposts & lighting', image: '/assets/a3/process/level/level-10.png' },
+                { title: 'Level dressing & props', image: '/assets/a3/process/level/level-11.png' },
+            ],
+        },
     ] satisfies ConceptTab[],
 }
 
